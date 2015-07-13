@@ -1,0 +1,21 @@
+Tumblr
+
+Retrieve  video and photo info
+https://www.tumblr.com/docs/en/api/v2#photo-posts
+api.tumblr.com/v2/blog/{base-hostname}/posts[/type]?api_key={key}&[optional-params=]
+
+Retrieve Blog Info
+api.tumblr.com/v2/blog/{base-hostname}/info?api_key={key}
+
+OAuth
+Request-token URL   http://www.tumblr.com/oauth/request_token
+Authorize URL   http://www.tumblr.com/oauth/authorize
+Access-token URL    http://www.tumblr.com/oauth/access_token
+
+Fliker 
+
+https://www.flickr.com/services/api/
+auth.oauth api
+galleries api
+photos api
+photos.comments api
