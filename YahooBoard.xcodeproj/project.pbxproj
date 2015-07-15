@@ -15,6 +15,7 @@
 		8FFFEE871B4D0F930056CF6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FFFEE861B4D0F930056CF6D /* Images.xcassets */; };
 		8FFFEE8A1B4D0F930056CF6D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FFFEE881B4D0F930056CF6D /* LaunchScreen.xib */; };
 		8FFFEE961B4D0F930056CF6D /* YahooBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFFEE951B4D0F930056CF6D /* YahooBoardTests.m */; };
+		9B15B4F01B56689600D14C72 /* Tumblr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B15B4EF1B56689600D14C72 /* Tumblr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		8FFFEE8F1B4D0F930056CF6D /* YahooBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YahooBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFFEE941B4D0F930056CF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FFFEE951B4D0F930056CF6D /* YahooBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YahooBoardTests.m; sourceTree = "<group>"; };
+		9B15B4EF1B56689600D14C72 /* Tumblr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tumblr.m; sourceTree = "<group>"; };
+		9B15B4F11B5668A500D14C72 /* Tumblr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tumblr.h; sourceTree = "<group>"; };
 		A37F31571D529DA2A008A2CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9A113A13774075A4B7D4D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,10 +100,12 @@
 		8FFFEE781B4D0F930056CF6D /* YahooBoard */ = {
 			isa = PBXGroup;
 			children = (
+				9B15B4EE1B5667FC00D14C72 /* Controller */,
+				9B15B4EC1B5667D000D14C72 /* View */,
+				9B15B4EA1B5667B500D14C72 /* ClientAPI */,
+				9B15B4E91B5667AA00D14C72 /* Models */,
 				8FFFEE7D1B4D0F930056CF6D /* AppDelegate.h */,
 				8FFFEE7E1B4D0F930056CF6D /* AppDelegate.m */,
-				8FFFEE801B4D0F930056CF6D /* ViewController.h */,
-				8FFFEE811B4D0F930056CF6D /* ViewController.m */,
 				8FFFEE831B4D0F930056CF6D /* Main.storyboard */,
 				8FFFEE861B4D0F930056CF6D /* Images.xcassets */,
 				8FFFEE881B4D0F930056CF6D /* LaunchScreen.xib */,
@@ -133,6 +138,38 @@
 				8FFFEE941B4D0F930056CF6D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B15B4E91B5667AA00D14C72 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9B15B4EF1B56689600D14C72 /* Tumblr.m */,
+				9B15B4F11B5668A500D14C72 /* Tumblr.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9B15B4EA1B5667B500D14C72 /* ClientAPI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ClientAPI;
+			sourceTree = "<group>";
+		};
+		9B15B4EC1B5667D000D14C72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9B15B4EE1B5667FC00D14C72 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8FFFEE801B4D0F930056CF6D /* ViewController.h */,
+				8FFFEE811B4D0F930056CF6D /* ViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		BCA61800DF037514F7487452 /* Frameworks */ = {
@@ -279,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FFFEE821B4D0F930056CF6D /* ViewController.m in Sources */,
+				9B15B4F01B56689600D14C72 /* Tumblr.m in Sources */,
 				8FFFEE7F1B4D0F930056CF6D /* AppDelegate.m in Sources */,
 				8FFFEE7C1B4D0F930056CF6D /* main.m in Sources */,
 			);
