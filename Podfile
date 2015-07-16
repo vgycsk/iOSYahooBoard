@@ -4,3 +4,4 @@ pod 'AFNetworking'
 pod "BDBOAuth1Manager"
 pod 'objectiveflickr'
 pod 'TMTumblrSDK'
+pod 'FlickrKit'
