@@ -40,7 +40,7 @@
 - (void)setImage:(NSArray *)data {
     Flickr *flickrObj = data[0];
     NSLog(@"%@", flickrObj.title);
-    [self.demoImageView setImageWithURL:flickrObj.photoUrl];
+    [self.flickrImageView setImageWithURL:flickrObj.photoUrl];
 }
 
 

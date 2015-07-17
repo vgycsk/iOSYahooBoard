@@ -10,6 +10,7 @@
 #import "FlickrKitClient.h"
 
 @interface FlickrDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *demoImageView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *flickrImageView;
 
 @end
