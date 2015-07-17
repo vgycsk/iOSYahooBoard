@@ -169,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="1998" y="1073"/>
         </scene>
-        <!--LoginUI View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="0N7-V4-4iX">
             <objects>
-                <viewController id="3cU-BW-57O" customClass="LoginUIViewController" sceneMemberID="viewController">
+                <viewController id="3cU-BW-57O" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hwt-2t-vQg"/>
                         <viewControllerLayoutGuide type="bottom" id="hVY-33-yCa"/>
@@ -200,6 +200,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rPS-bR-rPd"/>
+                    <connections>
+                        <outlet property="loginButton" destination="c0S-PY-yYE" id="rtu-c6-pc4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTQ-AI-h6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,5 +1,5 @@
 //
-//  LoginUIViewController.h
+//  LoginViewController.h
 //  YahooBoard
 //
 //  Created by Shu-Yen Chang on 7/17/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginUIViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @end
