@@ -16,7 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 
-@property (strong, nonatomic) NSMutableArray *imageArray;
+@property (strong, nonatomic) NSMutableArray *flickrImageArray;
+@property (strong, nonatomic) NSMutableArray *tumblrImageArray;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -32,9 +33,10 @@
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ImageCell"];
     
-    self.imageArray = [[NSMutableArray alloc]init];
+    self.flickrImageArray = [[NSMutableArray alloc]init];
+    self.tumblrImageArray = [[NSMutableArray alloc]init];
     
-    //[self searchFlickrData:@"moon"];
+    [self searchFlickrData:@"moon"];
     [self searchTumblrData:@"nba"];
     
     
@@ -59,15 +61,20 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.imageArray count];
+    //return self.flickrImageArray.count + self.tumblrImageArray.count;
+    //return self.flickrImageArray.count;
+    return self.tumblrImageArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    //cell.flickr = self.imageArray[indexPath.row];
-    cell.tumblr = self.imageArray[indexPath.row];
-    
+    if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
+        cell.flickr = self.flickrImageArray[indexPath.row];
+    }
+    if (indexPath.row %2 == 1 && self.tumblrImageArray[indexPath.row] != nil) {
+        cell.tumblr = self.tumblrImageArray[indexPath.row];
+    }
     return cell;
 }
 
@@ -90,7 +97,7 @@
         if (data) {
             //[self setImage:data];
             //NSLog(@"%@", data);
-            self.imageArray = data;
+            self.flickrImageArray = data;
             [self.collectionView reloadData];
         } else {
             NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
@@ -104,7 +111,7 @@
     [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
             //NSLog(@"data %@", data);
-            self.imageArray = data;
+            self.tumblrImageArray = data;
             [self.collectionView reloadData];
         } else {
             NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
