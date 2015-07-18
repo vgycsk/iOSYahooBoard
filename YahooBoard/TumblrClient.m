@@ -62,18 +62,17 @@ NSString * const kTumblrBaseAPIUrl = @"http://api.tumblr.com";
     }];
 }
 
-- (void) searchPostWithTag:(NSString *)tag limit:(int)limit before:(int)timestamp completion:(void (^)(NSArray *, NSError *))callback{
+- (void) searchPostWithTag:(NSString *)tag limit:(int)limit before:(int)timestamp type:(NSString *)type completion:(void (^)(NSArray *, NSError *))callback{
     NSString *url = [NSString stringWithFormat:@"v2/tagged?tag=%@&api_key=%@", tag, kTumblrConsumerKey];
     [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSArray *tweets = [Tweet tweetsWithArray:responseObject];
-        NSLog(@"response %@", responseObject);
-        callback(nil, nil);
+        NSArray *posts = [Tumblr tumblrsWithArrayFromRawResponse:responseObject filtredByType:type];
+        //NSLog(@"response %@", responseObject);
+        callback(posts, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"[ERROR] tag posts retrieval failed");
         callback(nil, error);
     }];
 }
-
 
 
 @end
