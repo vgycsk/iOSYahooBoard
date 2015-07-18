@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Flickr.h"
-
+#import "Tumblr.h"
+#import "Flickr.h"
 @interface ImageCell : UICollectionViewCell
 
 @property (weak, nonatomic) Flickr *flickr;
+@property (weak, nonatomic) Tumblr *tumblr;
 @property (weak, nonatomic) IBOutlet UILabel *icon;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @end

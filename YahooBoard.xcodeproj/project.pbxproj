@@ -179,8 +179,8 @@
 			children = (
 				334892301B59E46900BD182D /* TumblrClient.h */,
 				334892311B59E46900BD182D /* TumblrClient.m */,
-				333261A11B5744C200C3BCA9 /* FlickrKitClient.m */,
 				333261A31B5744D300C3BCA9 /* FlickrKitClient.h */,
+				333261A11B5744C200C3BCA9 /* FlickrKitClient.m */,
 			);
 			name = ClientAPI;
 			sourceTree = "<group>";
