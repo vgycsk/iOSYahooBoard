@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FlickrKitClient.h"
 #import "ImageCell.h"
+#import "TumblrClient.h"
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -30,9 +31,8 @@
     
     self.imageArray = [[NSMutableArray alloc]init];
     
-    [self searchFlickrData:@"moon"];
-    [self setupCollectionView];
-    
+    //[self searchFlickrData:@"moon"];
+    [self searchTumblrData:@"nba"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,14 +53,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    cell.flickr = self.imageArray[indexPath.row];
-    NSLog(@"=================....");
+    //cell.flickr = self.imageArray[indexPath.row];
+    cell.tumblr = self.imageArray[indexPath.row];
     
     return cell;
 }
 
 
-#pragma mark - Table Methods
+#pragma mark - collection Methods
 - (void)setupCollectionView {
     self.collectionView.delegate = self;
     self.collectionView.dataSource =self;
@@ -68,23 +68,37 @@
 }
 
 
+
 #pragma util method
 
 - (void)searchFlickrData:(NSString *)searchKey {
-    //NSString *searchText = searchKey;
-    NSString *searchText = @"moon";
     
     FlickrKitClient *client = [FlickrKitClient sharedInstance];
-    [client searchPhotoWithText:searchText page:10 pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
+    [client searchPhotoWithText:searchKey page:10 pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
         if (data) {
             //[self setImage:data];
             //NSLog(@"%@", data);
             self.imageArray = data;
             [self.collectionView reloadData];
+        } else {
+            NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
         }
     }];
 }
 
+- (void)searchTumblrData:(NSString *)searchKey {
+
+    double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
+    [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
+        if ([data count]) {
+            //NSLog(@"data %@", data);
+            self.imageArray = data;
+            [self.collectionView reloadData];
+        } else {
+            NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
+        }
+    }];
+}
 /*
  - (void)setImage:(NSArray *)data {
  Flickr *flickrObj = data[0];

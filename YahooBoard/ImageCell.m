@@ -21,4 +21,9 @@
     [self.image setImageWithURL:self.flickr.photoUrl];
 }
 
+
+- (void)setTumblr:(Tumblr *)tumblr{
+    _tumblr = tumblr;
+    [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
+}
 @end
