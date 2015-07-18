@@ -12,6 +12,6 @@
 @property (nonatomic, strong) NSURL *photoUrl;
 @property (nonatomic, strong) NSDictionary *rawPhotoInfo;
 
-- (id) initWithDictionary:(NSDictionary *)dictionary potoUrl:(NSURL *)photoUrl;
+- (id) initWithDictionary:(NSDictionary *)dictionary photoUrl:(NSURL *)photoUrl;
 
 @end
