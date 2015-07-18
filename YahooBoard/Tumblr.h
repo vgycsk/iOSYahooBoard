@@ -12,12 +12,18 @@
 #import <Foundation/Foundation.h>
 @interface Tumblr: NSObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSURL *photoUrl;
+@property (nonatomic, strong) NSString *caption;
+@property (nonatomic, strong) NSString *blogName;
+@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSDictionary *rawData;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *photoUrl;
+@property double timestamp;
 
-- (id) initWithDictionary:(NSDictionary *)dictionary;
+- (Tumblr *) initWithDictionary:(NSDictionary *)dictionary;
++ (NSArray *) tumblrsWithArrayFromRawResponse:responseObject;
++ (NSArray *) tumblrsWithArrayFromRawResponse:responseObject filtredByType:(NSString *)type;
 
 @end
 
