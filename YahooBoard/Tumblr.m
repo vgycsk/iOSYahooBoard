@@ -6,4 +6,15 @@
 //  Copyright (c) 2015 XXX. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Tumblr.h"
+
+@implementation Tumblr
+
+- (id) initWithDictionary:(NSDictionary *)dictionary{
+
+    return self;
+}
+
+
+
+@end
