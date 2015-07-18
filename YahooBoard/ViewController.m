@@ -11,13 +11,16 @@
 #import "ImageCell.h"
 #import "TumblrClient.h"
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 
 @property (strong, nonatomic) NSMutableArray *imageArray;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, strong) UISearchBar *searchBar;
 
 @end
 
@@ -33,6 +36,15 @@
     
     //[self searchFlickrData:@"moon"];
     [self searchTumblrData:@"nba"];
+    
+    
+    // search bar
+    self.searchBar = [[UISearchBar alloc] init];
+    self.searchBar.delegate = self;
+    self.navigationItem.titleView = self.searchBar;
+    self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,4 +118,27 @@
  [self.flickrImageView setImageWithURL:flickrObj.photoUrl];
  }
  */
+
+#pragma mark - Search methods
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    //[searchBar setShowsCancelButton:YES animated:YES];
+    return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSString *query = self.searchBar.text;
+    
+ 
+    //[self fetchBusinessesWithQuery:query params:nil];
+    [searchBar setShowsCancelButton:NO];
+    [searchBar resignFirstResponder];
+
+}
+
+// Reset searchbar on cancel
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    self.searchBar.text = @"";
+    [searchBar resignFirstResponder];
+}
 @end
