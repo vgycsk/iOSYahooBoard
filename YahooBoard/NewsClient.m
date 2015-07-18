@@ -37,7 +37,17 @@ NSString * const imageBaseUrl = @"http://www.nytimes.com/";
 
 - (void) queryNewsWithParameter:(NSString *)searchWord category:(NSString *)category sortBy:(NSString *)sortBy completion:(void (^)(NSArray *newsArray, NSError *error))callback
 {
-    NSString *queryString = [[NSString alloc] initWithFormat:@"q=%@&fq=news_desk:(\"%@\")&sort=%@",searchWord,category,sortBy ];
+    NSString *queryString;
+    if ( [searchWord isEqualToString:@""] || searchWord == nil)
+    {
+        queryString = [[NSString alloc] initWithFormat:@"fq=news_desk:(\"%@\")&sort=%@",category,sortBy ];
+        
+    }
+    else
+    {
+        queryString = [[NSString alloc] initWithFormat:@"q=%@&fq=news_desk:(\"%@\")&sort=%@",searchWord,category,sortBy ];
+
+    }
     NSString *apiRawUrlString = [[NSString alloc] initWithFormat:@"%@?%@&api-key=%@",newAPIBaseUrl,queryString,newsAPIKey];
     
     NSString *apiUrlString = [apiRawUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
