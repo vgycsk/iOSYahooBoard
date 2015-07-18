@@ -8,30 +8,49 @@
 
 #import "TumblrDetailViewController.h"
 #import "TumblrClient.h"
+#import <UIImageView+AFNetworking.h>
 
 @implementation TumblrDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
-    [[TumblrClient sharedInstance] searchPostWithTag:@"nba" limit:20 before:timestamp completion:^(NSArray *data, NSError *error) {
-        if (data) {
-            
-        }
-    }];
+    
+    
+    NSString *tag = @"nba";
+    [self getSearchedPostWithTag:tag];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-
-- (void)setImage:(NSArray *)data {
-
+- (void)getSearchedPostWithTag:(NSString *)tag {
+    double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
+    [[TumblrClient sharedInstance] searchPostWithTag:tag limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
+        if ([data count]) {
+            //NSLog(@"data %@", data);
+            [self displayTumblrPostDetail:data[0]];
+        } else {
+            NSLog(@"[WARNING] No tumblr posts with tag %@ found", tag);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)displayTumblrPostDetail:(Tumblr *)post {
+    self.author.text = post.blogName;
+    self.desc.text = post.caption;
+    self.tags.text = [post.tags componentsJoinedByString:@", "];
+    [self setImageWithTumblr:post];
+}
+
+- (void)setImageWithTumblr:(Tumblr *)data {
+    NSURL *imageUrl = [NSURL URLWithString:data.photoUrl];
+    NSLog(@"image url is %@", data.photoUrl);
+    [self.image setImageWithURL:imageUrl];
 }
 
 @end

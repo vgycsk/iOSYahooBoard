@@ -69,6 +69,7 @@
             //[self setImage:data];
             //NSLog(@"%@", data);
             self.imageArray = data;
+            collectionView reloadDat
         }
     }];
 }
