@@ -22,14 +22,17 @@
 
 @implementation ViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ImageCell"];
+    
     self.imageArray = [[NSMutableArray alloc]init];
     
     [self searchFlickrData:@"moon"];
     [self setupCollectionView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,12 +47,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.imageArray.count;
+    return [self.imageArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
+    ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     cell.flickr = self.imageArray[indexPath.row];
     NSLog(@"=================....");
     
