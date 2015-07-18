@@ -63,6 +63,9 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     //return self.flickrImageArray.count + self.tumblrImageArray.count;
     //return self.flickrImageArray.count;
+
+    //NSInteger *count = self.flickrImageArray.count + self.tumblrImageArray.count;
+    //return count;
     return self.tumblrImageArray.count;
 }
 
@@ -139,7 +142,8 @@
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
     [searchBar resignFirstResponder];
-
+    [self searchFlickrData:query];
+    [self searchTumblrData:query];
 }
 
 // Reset searchbar on cancel
