@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 
 @property (strong, nonatomic) NSMutableArray *imageArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -69,16 +70,16 @@
             //[self setImage:data];
             //NSLog(@"%@", data);
             self.imageArray = data;
-            collectionView reloadDat
+            [self.collectionView reloadData];
         }
     }];
 }
 
 /*
-- (void)setImage:(NSArray *)data {
-    Flickr *flickrObj = data[0];
-    NSLog(@"%@", flickrObj.title);
-    [self.flickrImageView setImageWithURL:flickrObj.photoUrl];
-}
-*/
+ - (void)setImage:(NSArray *)data {
+ Flickr *flickrObj = data[0];
+ NSLog(@"%@", flickrObj.title);
+ [self.flickrImageView setImageWithURL:flickrObj.photoUrl];
+ }
+ */
 @end

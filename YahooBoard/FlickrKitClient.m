@@ -62,7 +62,7 @@ static NSString *_apiSecret = @"a8ec9e22490aa357";
         NSURL *url;
         for (id photoInfo in info[@"photo"]) {
             url = [[FlickrKitClient sharedInstance].flickrKit photoURLForSize:FKPhotoSizeSmall320 fromPhotoDictionary:photoInfo];
-            Flickr *flickrObj = [[Flickr alloc] initWithDictionary:photoInfo photoUrl:url];
+            Flickr *flickrObj = [[Flickr alloc] initWithDictionary:photoInfo potoUrl:url];
             [flickrsObjs addObject:flickrObj];
         }
     }
