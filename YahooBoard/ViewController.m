@@ -29,7 +29,7 @@
     self.imageArray = [[NSMutableArray alloc]init];
     
     [self searchFlickrData:@"moon"];
-    
+    [self setupCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,9 +56,16 @@
     return cell;
 }
 
+
+#pragma mark - Table Methods
+- (void)setupCollectionView {
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource =self;
+    
+}
+
+
 #pragma util method
-
-
 
 - (void)searchFlickrData:(NSString *)searchKey {
     //NSString *searchText = searchKey;
