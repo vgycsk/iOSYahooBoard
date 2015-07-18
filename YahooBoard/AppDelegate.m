@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "TumblrClient.h"
 
 @interface AppDelegate ()
 
@@ -44,7 +43,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[TumblrClient sharedAuthInstance] openURL:url];
     return YES;
 }
 

@@ -15,7 +15,8 @@
 @property (nonatomic, strong) void (^loginCompletion)(Tumblr *tumblr, NSError *error);
 
 + (TumblrClient *)sharedInstance;
-+ (TumblrClient *)sharedAuthInstance;
++ (TumblrClient *)sharedInstanceForType:(NSString *)type;
 - (void)loginWithCompletion:(void (^)(Tumblr *user, NSError *error))completion;
 - (void)openURL:(NSURL *)url;
+- (void) searchPostWithTag:(NSString *)tag limit:(int)limit before:(int)timestamp completion:(void (^)(NSArray *, NSError *))callback;
 @end
