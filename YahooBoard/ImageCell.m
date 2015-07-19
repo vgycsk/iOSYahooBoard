@@ -8,11 +8,20 @@
 
 #import "ImageCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "ImageCell.h"
 
 @implementation ImageCell
 
 - (void)awakeFromNib {
     // Initialization code
+    // tap gesture
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickOnPicture:)];
+    //[tapGestureRecognizer setNumberOfTouchesRequired:1];
+    [tapGestureRecognizer setNumberOfTapsRequired:1];
+
+    [self.image addGestureRecognizer:tapGestureRecognizer];
+    self.image.userInteractionEnabled = YES;
+    self.userInteractionEnabled = YES;
 }
 
 
@@ -26,4 +35,16 @@
     _tumblr = tumblr;
     [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
 }
+
+- (void)didClickOnPicture:(id)sender {
+    Flickr *flickr;
+    flickr = self.flickr;
+   
+
+    [self.delegate imageCell:self didTapPhoto:flickr];
+    
+   
+}
+
+
 @end
