@@ -208,9 +208,6 @@
 		9B170F981B58AB1500D32EEB /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				9B1BE6E11B5A6C3C00F6D933 /* ImageCell.h */,
-				9B1BE6E21B5A6C3C00F6D933 /* ImageCell.m */,
-				9B1BE6E31B5A6C3C00F6D933 /* ImageCell.xib */,
 			);
 			name = Image;
 			sourceTree = "<group>";
@@ -218,6 +215,9 @@
 		9B6CCDF21B59E38000714506 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9B1BE6E11B5A6C3C00F6D933 /* ImageCell.h */,
+				9B1BE6E21B5A6C3C00F6D933 /* ImageCell.m */,
+				9B1BE6E31B5A6C3C00F6D933 /* ImageCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";

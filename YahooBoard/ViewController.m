@@ -8,10 +8,11 @@
 
 #import "ViewController.h"
 #import "FlickrKitClient.h"
-#import "ImageCell.h"
 #import "TumblrClient.h"
+#import "FlickrDetailViewController.h"
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
+
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
@@ -62,11 +63,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     //return self.flickrImageArray.count + self.tumblrImageArray.count;
-    //return self.flickrImageArray.count;
+    return self.flickrImageArray.count;
 
     //NSInteger *count = self.flickrImageArray.count + self.tumblrImageArray.count;
     //return count;
-    return self.tumblrImageArray.count;
+    //return self.tumblrImageArray.count;
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,5 +153,13 @@
     [searchBar setShowsCancelButton:NO animated:YES];
     self.searchBar.text = @"";
     [searchBar resignFirstResponder];
+}
+
+-(void)imageCell:(ImageCell *)imageCell didTapPhoto:(Flickr *)flickr {
+    NSLog(@"tab");
+    FlickrDetailViewController *fdvc = [[FlickrDetailViewController alloc] init];
+    [fdvc setFlickr:flickr];
+
+    [self.navigationController pushViewController:fdvc animated:YES];
 }
 @end

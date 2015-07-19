@@ -10,10 +10,23 @@
 #import "Flickr.h"
 #import "Tumblr.h"
 #import "Flickr.h"
+
+
+@class ImageCell;
+
+@protocol ImageCellDelegate <NSObject>
+-(void)imageCell:(ImageCell *)imageCell didTapPhoto:(Flickr *)flickr;
+
+@end
+
 @interface ImageCell : UICollectionViewCell
 
 @property (weak, nonatomic) Flickr *flickr;
 @property (weak, nonatomic) Tumblr *tumblr;
 @property (weak, nonatomic) IBOutlet UILabel *icon;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
+
+
+@property (nonatomic, weak) id<ImageCellDelegate> delegate;
+
 @end

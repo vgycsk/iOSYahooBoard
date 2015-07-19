@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
                                 <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LOU-Gp-O6d">
@@ -32,14 +32,28 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="DJZ-ZS-AHT"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsu-99-vfJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsu-99-vfJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="G2b-C5-XV7"/>
+                                    <constraint firstAttribute="height" constant="121" id="Ngl-A5-Xis"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" id="8sn-9A-1rX"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="D7N-4b-czy"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="DRV-nB-frz"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="FSs-is-KLa"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QOS-wq-CF6"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="obb-AI-cx0"/>
+                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="uCP-FM-SpN"/>
+                            <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="wkh-1f-R5P"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c9k-4q-vBR">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="HT5-IZ-2h3">

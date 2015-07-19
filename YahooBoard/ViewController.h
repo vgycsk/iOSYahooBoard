@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Flickr.h"
+#import "Tumblr.h"
+#import "ImageCell.h"
 
 @interface ViewController : UIViewController
+
 
 
 @end
