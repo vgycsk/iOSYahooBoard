@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "ImageCell.h"
 
+
 @implementation ImageCell
 
 - (void)awakeFromNib {
@@ -40,10 +41,8 @@
     Flickr *flickr;
     flickr = self.flickr;
    
-
-    [self.delegate imageCell:self didTapPhoto:flickr];
+    [self.delegate imageCell:self didTapFlickrPhoto:flickr];
     
-   
 }
 
 

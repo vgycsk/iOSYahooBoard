@@ -8,6 +8,7 @@
 @implementation Flickr
 
 - (id) initWithDictionary:(NSDictionary *)dictionary potoUrl:(NSURL *)photoUrl {
+    NSLog(@"%@",dictionary);
     self.rawPhotoInfo = dictionary;
     self.title = dictionary[@"title"];
     self.author = dictionary[@"owner"];

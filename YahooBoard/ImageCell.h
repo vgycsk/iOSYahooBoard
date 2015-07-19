@@ -15,7 +15,8 @@
 @class ImageCell;
 
 @protocol ImageCellDelegate <NSObject>
--(void)imageCell:(ImageCell *)imageCell didTapPhoto:(Flickr *)flickr;
+-(void)imageCell:(ImageCell *)imageCell didTapFlickrPhoto:(Flickr *)flickr;
+-(void)imageCell:(ImageCell *)imageCell didTapTumblrPhoto:(Tumblr *)tumblr;
 
 @end
 

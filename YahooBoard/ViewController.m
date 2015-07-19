@@ -10,7 +10,7 @@
 #import "FlickrKitClient.h"
 #import "TumblrClient.h"
 #import "FlickrDetailViewController.h"
-
+#import "TumblrDetailViewController.h"
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate>
 
@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSMutableArray *tumblrImageArray;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) FlickrDetailViewController *flickrDetailViewController;
+@property (strong, nonatomic) TumblrDetailViewController *tumblrDetailViewController;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
@@ -48,6 +51,9 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
     self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
+    
+    //setup controler
+    self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,9 +82,11 @@
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row];
+        cell.delegate = self;
     }
     if (indexPath.row %2 == 1 && self.tumblrImageArray[indexPath.row] != nil) {
         cell.tumblr = self.tumblrImageArray[indexPath.row];
+        cell.delegate = self;
     }
     return cell;
 }
@@ -155,11 +163,19 @@
     [searchBar resignFirstResponder];
 }
 
--(void)imageCell:(ImageCell *)imageCell didTapPhoto:(Flickr *)flickr {
-    NSLog(@"tab");
-    FlickrDetailViewController *fdvc = [[FlickrDetailViewController alloc] init];
-    [fdvc setFlickr:flickr];
+-(void)imageCell:(ImageCell *)imageCell didTapFlickrPhoto:(Flickr *)flickr {
+    [self.flickrDetailViewController  setFlickr:flickr];
+    if(self.navigationController != nil) {
+        [self.navigationController pushViewController:self.flickrDetailViewController  animated:YES];
+    }
+    
+}
 
-    [self.navigationController pushViewController:fdvc animated:YES];
+-(void)imageCell:(ImageCell *)imageCell didTapTumblrPhoto:(Tumblr *)tumblr {
+    [self.tumblrDetailViewController  setTumblr:tumblr];
+    if(self.navigationController != nil) {
+        [self.navigationController pushViewController:self.tumblrDetailViewController  animated:YES];
+    }
+    
 }
 @end

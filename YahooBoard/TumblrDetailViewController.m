@@ -23,6 +23,12 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+
+- (void)setTumblr:(Tumblr *)tumblr{
+    _tumblr = tumblr;
+    [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
+}
+
 - (void)getSearchedPostWithTag:(NSString *)tag {
     double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
     [[TumblrClient sharedInstance] searchPostWithTag:tag limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {

@@ -12,6 +12,9 @@
 
 @interface FlickrDetailViewController : UIViewController
 
+
+
+@property (weak, nonatomic) IBOutlet UILabel *flickrTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *flickrImageView;
 @property (weak, nonatomic) Flickr *flickr;
 

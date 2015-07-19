@@ -5,7 +5,6 @@
 
 #import "FlickrDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
-#import "Flickr.h"
 
 @interface FlickrDetailViewController ()
 
@@ -18,13 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadImages];
+    
+    [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
+    self.flickrTitle.text = self.flickr.title;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setFlickr:(Flickr *)flickr{
+    _flickr = flickr;
+
 }
 
 - (void)loadImages {

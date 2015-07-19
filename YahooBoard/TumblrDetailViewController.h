@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tumblr.h"
 
 @interface TumblrDetailViewController : UIViewController
+
+
+@property (weak, nonatomic) Tumblr *tumblr;
+
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *desc;
 @property (weak, nonatomic) IBOutlet UILabel *author;
 @property (weak, nonatomic) IBOutlet UILabel *tags;
+
 
 @end
