@@ -31,6 +31,8 @@
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
+@property (strong, nonatomic) NSInteger *queryCount;
+
 @end
 
 NSString *defaultSearchTerm = @"nba";
@@ -63,10 +65,10 @@ NSString *currentSearchCategory;
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 
-
-    // collection view
-
-
+    // news header
+    [self.newsHeaderLabel.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    [self.newsHeaderLabel.layer setCornerRadius:10.0f];
     currentSearchCategory = defaultSearchCategory;
 
 }
