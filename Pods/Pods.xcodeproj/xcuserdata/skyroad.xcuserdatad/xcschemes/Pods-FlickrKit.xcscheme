@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F8DB95454B9CA7A3D3CFF3A"
+               BlueprintIdentifier = "D5CB7C9EBDC1A66CAE3E9B8B"
                BuildableName = "libPods-FlickrKit.a"
                BlueprintName = "Pods-FlickrKit"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -39,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F8DB95454B9CA7A3D3CFF3A"
-            BuildableName = "libPods-FlickrKit.a"
-            BlueprintName = "Pods-FlickrKit"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -57,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F8DB95454B9CA7A3D3CFF3A"
-            BuildableName = "libPods-FlickrKit.a"
-            BlueprintName = "Pods-FlickrKit"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

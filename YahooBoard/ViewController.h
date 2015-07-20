@@ -10,6 +10,7 @@
 #import "Flickr.h"
 #import "Tumblr.h"
 #import "ImageCell.h"
+#import <SVProgressHUD.h>
 
 @interface ViewController : UIViewController
 

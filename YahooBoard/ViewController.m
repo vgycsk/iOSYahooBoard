@@ -30,7 +30,7 @@
 @property (strong, nonatomic) TumblrDetailViewController *tumblrDetailViewController;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
-
+@property  int queryStatusCount;
 
 
 @end
@@ -164,8 +164,6 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
         */
         if (![displayText isEqual:[NSNull null]]) {
             self.newsHeaderLabel.text = displayText;
-            [self searchFlickrData:defaultSearchTerm];
-            [self searchTumblrData:defaultSearchTerm];
             return;
         }
     }
@@ -180,6 +178,11 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             //NSLog(@"%@", data);
             self.flickrImageArray = [NSMutableArray arrayWithArray:data];
             [self.collectionView reloadData];
+            self.queryStatusCount +=1;
+
+            if ( self.queryStatusCount == 2) {
+                [SVProgressHUD dismiss];
+            }
         } else {
             NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
         }
@@ -193,6 +196,11 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             //NSLog(@"data %@", data);
             self.tumblrImageArray = [NSMutableArray arrayWithArray:data];
             [self.collectionView reloadData];
+            self.queryStatusCount +=1;
+            
+            if ( self.queryStatusCount == 2) {
+                [SVProgressHUD dismiss];
+            }
         } else {
             NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
         }
@@ -218,6 +226,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
     [searchBar resignFirstResponder];
+    
+    [self showLoad];
+    self.queryStatusCount = 0;
     [self searchFlickrData:query];
     [self searchTumblrData:query];
     [self searchNewsData:query];
@@ -258,4 +269,18 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     }
 }
 
+
+- (void) showLoad {
+    
+    UIColor *backgroundColor =[UIColor
+                               colorWithRed:0.0
+                               green:0.0
+                               blue:1.0
+                               alpha:0.5];
+    [SVProgressHUD setBackgroundColor:backgroundColor];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setRingThickness:(CGFloat)10.0];
+    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Loading"];
+}
 @end
