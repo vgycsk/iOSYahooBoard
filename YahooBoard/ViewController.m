@@ -35,8 +35,8 @@
 
 @end
 
-NSString *defaultSearchTerm = @"nba";
-NSString *defaultSearchCategory = @"Sports";
+NSString *defaultSearchTerm = @"food";
+NSString *defaultSearchCategory = @"Foods";
 NSString *currentSearchCategory;
 
 @implementation ViewController
@@ -70,6 +70,13 @@ NSString *currentSearchCategory;
     [self.newsHeaderLabel.layer setBorderWidth:1.0f];
     [self.newsHeaderLabel.layer setCornerRadius:10.0f];
     currentSearchCategory = defaultSearchCategory;
+    
+    
+    [self showLoad];
+    self.queryStatusCount = 0;
+    [self searchFlickrData:defaultSearchTerm];
+    [self searchTumblrData:defaultSearchTerm];
+    [self searchNewsData:defaultSearchTerm];
 
 }
 
@@ -223,6 +230,8 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
+    //self.searchBar.text = @"";
+    self.newsHeaderLabel.text = @"  Loading";
     [searchBar resignFirstResponder];
     
     [self showLoad];
@@ -236,6 +245,8 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:NO animated:YES];
     self.searchBar.text = @"";
+    self.newsHeaderLabel.text = @"";
+    [SVProgressHUD dismiss];
     [searchBar resignFirstResponder];
 }
 
