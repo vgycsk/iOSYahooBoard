@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+
 @property (strong, nonatomic) FlickrDetailViewController *flickrDetailViewController;
 @property (strong, nonatomic) TumblrDetailViewController *tumblrDetailViewController;
 
@@ -57,6 +58,9 @@ NSString *defaultSearchTerm = @"nba";
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
+    
+    // collection view
+
 }
 
 - (void)didReceiveMemoryWarning {

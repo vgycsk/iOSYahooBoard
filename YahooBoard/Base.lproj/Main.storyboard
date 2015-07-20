@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="RqR-qB-z4r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="RqR-qB-z4r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -12,13 +12,16 @@
                         <viewControllerLayoutGuide type="top" id="roy-f0-eUW"/>
                         <viewControllerLayoutGuide type="bottom" id="hmQ-TE-p1s"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleAspectFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="zWR-Do-JbU">
                                 <rect key="frame" x="0.0" y="186" width="320" height="382"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
+                                <rect key="frame" x="0.0" y="186" width="320" height="382"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="382" id="Tx4-oO-C19"/>
                                     <constraint firstAttribute="width" constant="320" id="v1n-Tj-k1q"/>
@@ -49,10 +52,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="15p-d0-kC2"/>
+                            <constraint firstItem="zWR-Do-JbU" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="DHl-yG-6TA"/>
+                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="zWR-Do-JbU" secondAttribute="bottom" id="Og0-aU-DsH"/>
+                            <constraint firstAttribute="trailing" secondItem="zWR-Do-JbU" secondAttribute="trailing" id="T7i-Bo-UdH"/>
                             <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="ZXr-OO-hc9"/>
                             <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="btZ-0O-9mm"/>
                             <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="gGn-do-Fi1"/>
                             <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" id="sf3-Jx-AeP"/>
+                            <constraint firstItem="zWR-Do-JbU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="wA8-Gx-xVa"/>
                             <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="zNC-zj-VoC"/>
                             <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zaP-rL-fjb"/>
                         </constraints>
@@ -209,6 +216,9 @@
             <point key="canvasLocation" x="2601" y="341"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HomeBackground.png" width="168" height="300"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
