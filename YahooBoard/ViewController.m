@@ -37,7 +37,7 @@
 
 NSString *defaultSearchTerm = @"pizza";
 NSString *currentSearchTerm;
-NSString *defaultSearchCategory = @"Food";
+NSString *defaultSearchCategory = @"All";
 NSString *currentSearchCategory;
 
 // load more parameters
