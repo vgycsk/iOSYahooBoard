@@ -7,7 +7,6 @@
 //
 
 #import "NewsClient.h"
-#import "News.h"
 
 @interface NewsClient()
 

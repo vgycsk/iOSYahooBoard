@@ -5,13 +5,12 @@
 //  Created by Curtis Kang on 7/16/15.
 //  Copyright (c) 2015 XXX. All rights reserved.
 //
-
 #import "News.h"
 
 @implementation News
 - (id)initWithDictionary:(NSDictionary *)itemDict {
     self = [ super self];
-     NSMutableArray *newsList =[[ NSMutableArray alloc] init];
+    //NSMutableArray *newsList =[[ NSMutableArray alloc] init];
     if (self)
     {
             
