@@ -39,8 +39,15 @@
 @end
 
 NSString *defaultSearchTerm = @"pizza";
-NSString *defaultSearchCategory = @"Food";
+NSString *currentSearchTerm;
+NSString *defaultSearchCategory = @"All";
 NSString *currentSearchCategory;
+
+// load more parameters
+int currentFlickrPage;
+double currentTumblrTimestamp;
+BOOL loadMoreFlickr;
+BOOL loadMoreTumblr;
 
 @implementation ViewController
 
@@ -70,17 +77,20 @@ NSString *currentSearchCategory;
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 
     // news header
-    //[self.newsHeaderLabel.layer setBorderColor:[UIColor blueColor].CGColor];
-    //[self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    [self.newsHeaderLabel.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
     [self.newsHeaderLabel.layer setCornerRadius:7.0f];
     currentSearchCategory = defaultSearchCategory;
-    
+    currentSearchTerm = defaultSearchTerm;
     
     [self showLoad];
     self.queryStatusCount = 0;
     [self searchFlickrData:defaultSearchTerm];
     [self searchTumblrData:defaultSearchTerm];
     [self searchNewsData:defaultSearchTerm];
+    
+    [self resetSearch];
+
 
     // swipe news
     self.swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(switchNews:)];
@@ -88,7 +98,19 @@ NSString *currentSearchCategory;
     [self.swipeGesture setDirection:UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft];
     NSLog(@"swipe %@", self.swipeGesture);
     [self.newsHeaderLabel addGestureRecognizer:self.swipeGesture];
+}
 
+
+
+
+
+- (void)resetSearch {
+    currentTumblrTimestamp = [[NSDate date] timeIntervalSince1970] * 1000;
+    currentFlickrPage = 0;
+    loadMoreFlickr = NO;
+    loadMoreTumblr = NO;
+    self.tumblrImageArray = [[NSMutableArray alloc] init];
+    self.flickrImageArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,16 +125,25 @@ NSString *currentSearchCategory;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
     NSUInteger count;
     count = (self.flickrImageArray.count < self.tumblrImageArray.count)? self.flickrImageArray.count : self.tumblrImageArray.count ;
-    
     return (count-1)*2;
 
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    NSInteger count = [self collectionView:collectionView numberOfItemsInSection:(NSInteger)0]/2;
+    if (indexPath.row %2 == 0 && count <= indexPath.row/2+1 && !loadMoreFlickr) {
+        loadMoreFlickr = YES;
+        NSLog(@"load more flickr");
+        [self searchFlickrData:currentSearchTerm];
+    }
+    if (indexPath.row %2 == 1 && count <= (indexPath.row+1)/2+1 && !loadMoreTumblr) {
+        loadMoreTumblr = YES;
+        NSLog(@"load more tumblr");
+        [self searchTumblrData:currentSearchTerm];
+    }
+    
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
 
     [cell.layer setBorderWidth:2.0f];
@@ -194,40 +225,41 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 }
 
 - (void)searchFlickrData:(NSString *)searchKey {
-
     FlickrKitClient *client = [FlickrKitClient sharedInstance];
-    [client searchPhotoWithText:searchKey page:10 pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
+    [client searchPhotoWithText:searchKey page:currentFlickrPage pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
         if (data) {
             //[self setImage:data];
             //NSLog(@"%@", data);
-            self.flickrImageArray = [NSMutableArray arrayWithArray:data];
+            [self.flickrImageArray addObjectsFromArray:data];
+            
             [self.collectionView reloadData];
-            self.queryStatusCount +=1;
-
-            if ( self.queryStatusCount == 2) {
-                [SVProgressHUD dismiss];
-            }
         } else {
             NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
         }
+        self.queryStatusCount +=1;
+        if ( self.queryStatusCount == 2) {
+            [SVProgressHUD dismiss];
+        }
+        loadMoreFlickr = NO;
     }];
 }
 
 - (void)searchTumblrData:(NSString *)searchKey {
-    double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
-    [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
+    //double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
+    [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:10 before:currentTumblrTimestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
             //NSLog(@"data %@", data);
-            self.tumblrImageArray = [NSMutableArray arrayWithArray:data];
+            [self.tumblrImageArray addObjectsFromArray:data];
             [self.collectionView reloadData];
-            self.queryStatusCount +=1;
             
-            if ( self.queryStatusCount == 2) {
-                [SVProgressHUD dismiss];
-            }
         } else {
             NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
         }
+        self.queryStatusCount +=1;
+        if ( self.queryStatusCount == 2) {
+            [SVProgressHUD dismiss];
+        }
+        loadMoreTumblr = NO;
     }];
 }
 /*
@@ -253,11 +285,14 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     self.newsHeaderLabel.text = @"  Loading";
     [searchBar resignFirstResponder];
     
+    [self resetSearch];
+    
     [self showLoad];
     self.queryStatusCount = 0;
     [self searchFlickrData:query];
     [self searchTumblrData:query];
     [self searchNewsData:query];
+    currentSearchTerm = query;
 }
 
 // Reset searchbar on cancel
@@ -303,7 +338,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     UIColor *backgroundColor =[UIColor
                                colorWithRed:0.0
                                green:0.0
-                               blue:1.0
+                               blue:0.0
                                alpha:0.5];
     [SVProgressHUD setBackgroundColor:backgroundColor];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
@@ -313,11 +348,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 }
 
 - (IBAction)switchNews:(id)sender {
-    NSLog(@"swipe");
-    NSLog(@"%d",self.newsLists.count );
-    
-    NSLog(@"%d",self.newsCount);
-    
+
     self.newsCount += 1;
     if (self.newsLists.count > self.newsCount) {
         NSLog(@"swipe2");

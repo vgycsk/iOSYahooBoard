@@ -106,8 +106,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-No-ki6">
-                                <rect key="frame" x="16" y="121" width="288" height="220"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-No-ki6">
+                                <rect key="frame" x="16" y="121" width="288" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryFilterCell" id="cxG-z9-8Kj" customClass="SettingCell">
@@ -146,6 +146,7 @@
                             <constraint firstAttribute="trailing" secondItem="dHR-No-ki6" secondAttribute="trailing" constant="16" id="7fr-d3-hoV"/>
                             <constraint firstItem="fAU-7u-Tmr" firstAttribute="top" secondItem="ul9-P4-B6z" secondAttribute="bottom" constant="16" id="LcU-43-tq0"/>
                             <constraint firstItem="dHR-No-ki6" firstAttribute="top" secondItem="fAU-7u-Tmr" secondAttribute="bottom" constant="20" id="Zfv-I9-kBs"/>
+                            <constraint firstItem="lB5-zW-gU2" firstAttribute="top" secondItem="dHR-No-ki6" secondAttribute="bottom" constant="20" id="ku3-9d-blW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HNh-Nw-lru"/>
@@ -183,8 +184,8 @@
                                     <constraint firstAttribute="width" constant="207" id="2o4-g8-OvZ"/>
                                     <constraint firstAttribute="height" constant="120" id="QYe-zz-Ipd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flickr.png" translatesAutoresizingMaskIntoConstraints="NO" id="FgJ-EI-JuK">
@@ -195,7 +196,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="g9I-HN-ind" secondAttribute="centerX" id="7m1-2X-Uc4"/>
                             <constraint firstAttribute="centerX" secondItem="1MD-3l-hhn" secondAttribute="centerX" id="CLb-CK-mjP"/>
@@ -239,19 +240,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-QA-BtL">
                                 <rect key="frame" x="21" y="346" width="279" height="112"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-X5-0ZR">
                                 <rect key="frame" x="21" y="306" width="283" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNz-C4-fXd">
                                 <rect key="frame" x="21" y="471" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tumblr.png" translatesAutoresizingMaskIntoConstraints="NO" id="xlp-Gg-9N9">
@@ -264,11 +265,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="tags" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOB-Jp-azg">
                                 <rect key="frame" x="21" y="500" width="283" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fQA-QA-BtL" firstAttribute="top" secondItem="Re5-X5-0ZR" secondAttribute="bottom" constant="8" id="0NK-W9-JVD"/>
                             <constraint firstItem="L9G-pK-egl" firstAttribute="top" secondItem="xlp-Gg-9N9" secondAttribute="bottom" constant="14" id="1tY-fE-gEs"/>
@@ -307,6 +308,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b96-gl-wzG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -336,7 +338,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="flickr.png" width="512" height="512"/>
+        <image name="flickr.png" width="200" height="200"/>
         <image name="tumblr.png" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
