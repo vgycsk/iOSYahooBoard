@@ -35,8 +35,8 @@
 
 @end
 
-NSString *defaultSearchTerm = @"nba";
-NSString *defaultSearchCategory = @"Sports";
+NSString *defaultSearchTerm = @"pizza";
+NSString *defaultSearchCategory = @"Food";
 NSString *currentSearchCategory;
 
 @implementation ViewController
@@ -70,6 +70,13 @@ NSString *currentSearchCategory;
     //[self.newsHeaderLabel.layer setBorderWidth:1.0f];
     [self.newsHeaderLabel.layer setCornerRadius:7.0f];
     currentSearchCategory = defaultSearchCategory;
+    
+    
+    [self showLoad];
+    self.queryStatusCount = 0;
+    [self searchFlickrData:defaultSearchTerm];
+    [self searchTumblrData:defaultSearchTerm];
+    [self searchNewsData:defaultSearchTerm];
 
 }
 
@@ -104,13 +111,13 @@ NSString *currentSearchCategory;
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
         cell.cellType = @"flickr";
-        [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [cell.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     if (indexPath.row %2 == 1 && self.tumblrImageArray[(indexPath.row+1)/2] != nil) {
         cell.tumblr = self.tumblrImageArray[(indexPath.row+1)/2];
         cell.delegate = self;
         cell.cellType = @"tumblr";
-            [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+            [cell.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     return cell;
 }
@@ -134,8 +141,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)searchNewsData:(NSString *)searchKey {
     NSString *catString = [NSString stringWithFormat:@"\"%@\"", currentSearchCategory];
+    NSString *keyString = [NSString stringWithFormat:@"\"%@\"", searchKey];
     NSLog(@"cat is %@", catString);
-    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
+    [[NewsClient sharedInstance] queryNewsWithParameter:keyString category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
         if (newsArray) {
             [self loadNewsLabel:newsArray];
         }
@@ -223,6 +231,8 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
+    //self.searchBar.text = @"";
+    self.newsHeaderLabel.text = @"  Loading";
     [searchBar resignFirstResponder];
     
     [self showLoad];
@@ -236,6 +246,8 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:NO animated:YES];
     self.searchBar.text = @"";
+    self.newsHeaderLabel.text = @"";
+    [SVProgressHUD dismiss];
     [searchBar resignFirstResponder];
 }
 
