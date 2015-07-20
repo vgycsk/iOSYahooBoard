@@ -104,13 +104,13 @@ NSString *currentSearchCategory;
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
         cell.cellType = @"flickr";
-        [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [cell.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     if (indexPath.row %2 == 1 && self.tumblrImageArray[(indexPath.row+1)/2] != nil) {
         cell.tumblr = self.tumblrImageArray[(indexPath.row+1)/2];
         cell.delegate = self;
         cell.cellType = @"tumblr";
-            [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+            [cell.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     return cell;
 }

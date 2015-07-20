@@ -10,6 +10,7 @@
 #import "TumblrClient.h"
 #import <UIImageView+AFNetworking.h>
 
+
 @implementation TumblrDetailViewController
 
 - (void)viewDidLoad {
@@ -19,6 +20,7 @@
     
     NSString *tag = @"nba";
     [self getSearchedPostWithTag:tag];
+     self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -28,8 +30,19 @@
     _tumblr = tumblr;
     [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
     self.author.text = self.tumblr.blogName;
-    self.desc.text = self.tumblr.caption;
+    self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
     self.tags = self.tumblr.tags;
+}
+
+
+-(NSString *)stringByStrippingHTML:(NSString*)str
+{
+    NSRange r;
+    while ((r = [str rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location     != NSNotFound)
+    {
+        str = [str stringByReplacingCharactersInRange:r withString:@""];
+    }
+    return str;
 }
 
 - (void)getSearchedPostWithTag:(NSString *)tag {
