@@ -85,13 +85,11 @@ NSString *currentSearchCategory;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    //return self.flickrImageArray.count + self.tumblrImageArray.count;
-    return self.flickrImageArray.count;
-
-    //NSUInteger *count = (self.flickrImageArray.count < self.tumblrImageArray.count) ?self.flickrImageArray.count : self.tumblrImageArray.count;
-
-
-    //return self.tumblrImageArray.count;
+    
+    NSUInteger count;
+    count = (self.flickrImageArray.count < self.tumblrImageArray.count)? self.flickrImageArray.count : self.tumblrImageArray.count ;
+    
+    return (count-1)*2;
 
 }
 
@@ -102,13 +100,13 @@ NSString *currentSearchCategory;
     [cell.layer setBorderWidth:2.0f];
     [cell.layer setCornerRadius:50.0f];
 
-    if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
+    if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row/2] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
         cell.cellType = @"flickr";
         [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
     }
-    if (indexPath.row %2 == 1 && self.tumblrImageArray[indexPath.row] != nil) {
+    if (indexPath.row %2 == 1 && self.tumblrImageArray[(indexPath.row+1)/2] != nil) {
         cell.tumblr = self.tumblrImageArray[(indexPath.row+1)/2];
         cell.delegate = self;
         cell.cellType = @"tumblr";
