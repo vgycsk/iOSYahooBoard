@@ -13,6 +13,7 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *newsHeaderLabel;
 
 
 @end
