@@ -25,10 +25,13 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+
 @property (strong, nonatomic) FlickrDetailViewController *flickrDetailViewController;
 @property (strong, nonatomic) TumblrDetailViewController *tumblrDetailViewController;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
+
+@property (strong, nonatomic) NSInteger *queryCount;
 
 @end
 
@@ -43,12 +46,12 @@ NSString *currentSearchCategory;
     // Do any additional setup after loading the view, typically from a nib.
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ImageCell"];
-    
+
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
-    
+
     [self searchNewsData:defaultSearchTerm];
-    
+
     // search bar
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
@@ -57,12 +60,17 @@ NSString *currentSearchCategory;
     self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
     self.searchBar.placeholder = defaultSearchTerm;
-    
+
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
-    
+
+    // news header
+    [self.newsHeaderLabel.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    [self.newsHeaderLabel.layer setCornerRadius:10.0f];
     currentSearchCategory = defaultSearchCategory;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,21 +87,21 @@ NSString *currentSearchCategory;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     //return self.flickrImageArray.count + self.tumblrImageArray.count;
     return self.flickrImageArray.count;
-    
+
     //NSUInteger *count = (self.flickrImageArray.count < self.tumblrImageArray.count) ?self.flickrImageArray.count : self.tumblrImageArray.count;
-    
+
 
     //return self.tumblrImageArray.count;
-    
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    
+
     [cell.layer setBorderWidth:2.0f];
     [cell.layer setCornerRadius:50.0f];
-    
+
     if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
@@ -121,7 +129,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (void)setupCollectionView {
     self.collectionView.delegate = self;
     self.collectionView.dataSource =self;
-    
+
 }
 
 #pragma util method
@@ -145,7 +153,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
         } else if (![news.content isEqual:[NSNull null]]) {
             displayText = news.content;
         }
-        
+
         //NSLog(@"headline= %@", news.headline);
         //NSLog(@"content= %@", news.content);
         //NSLog(@"displayText %@", displayText);
@@ -164,7 +172,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 }
 
 - (void)searchFlickrData:(NSString *)searchKey {
-    
+
     FlickrKitClient *client = [FlickrKitClient sharedInstance];
     [client searchPhotoWithText:searchKey page:10 pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
         if (data) {
@@ -206,7 +214,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *query = self.searchBar.text;
-    
+
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
     [searchBar resignFirstResponder];
@@ -227,7 +235,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     if(self.navigationController != nil) {
         [self.navigationController pushViewController:self.flickrDetailViewController  animated:YES];
     }
-    
+
 }
 
 -(void)imageCell:(ImageCell *)imageCell didTapTumblrPhoto:(Tumblr *)tumblr {
@@ -235,7 +243,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     if(self.navigationController != nil) {
         [self.navigationController pushViewController:self.tumblrDetailViewController  animated:YES];
     }
-    
+
 }
 
 -(void)settingViewController:(SettingViewController *)controller didChangeCategory:(NSString*)category {

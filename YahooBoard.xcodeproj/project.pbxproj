@@ -25,6 +25,7 @@
 		8FFFEE871B4D0F930056CF6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FFFEE861B4D0F930056CF6D /* Images.xcassets */; };
 		8FFFEE8A1B4D0F930056CF6D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FFFEE881B4D0F930056CF6D /* LaunchScreen.xib */; };
 		8FFFEE961B4D0F930056CF6D /* YahooBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFFEE951B4D0F930056CF6D /* YahooBoardTests.m */; };
+		9B17FDF91B5CA8A500EE738A /* HomeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B17FDF81B5CA8A500EE738A /* HomeBackground.png */; };
 		9B1BE6E41B5A6C3C00F6D933 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1BE6E21B5A6C3C00F6D933 /* ImageCell.m */; };
 		9B1BE6E51B5A6C3C00F6D933 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1BE6E31B5A6C3C00F6D933 /* ImageCell.xib */; };
 		9B6CCE001B59E4DE00714506 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -75,6 +76,7 @@
 		8FFFEE8F1B4D0F930056CF6D /* YahooBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YahooBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFFEE941B4D0F930056CF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FFFEE951B4D0F930056CF6D /* YahooBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YahooBoardTests.m; sourceTree = "<group>"; };
+		9B17FDF81B5CA8A500EE738A /* HomeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HomeBackground.png; path = image/HomeBackground.png; sourceTree = "<group>"; };
 		9B1BE6E11B5A6C3C00F6D933 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		9B1BE6E21B5A6C3C00F6D933 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 		9B1BE6E31B5A6C3C00F6D933 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		9B170F981B58AB1500D32EEB /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				9B17FDF81B5CA8A500EE738A /* HomeBackground.png */,
 			);
 			name = Image;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B17FDF91B5CA8A500EE738A /* HomeBackground.png in Resources */,
 				8FFFEE851B4D0F930056CF6D /* Main.storyboard in Resources */,
 				9B1BE6E51B5A6C3C00F6D933 /* ImageCell.xib in Resources */,
 				8FFFEE8A1B4D0F930056CF6D /* LaunchScreen.xib in Resources */,
