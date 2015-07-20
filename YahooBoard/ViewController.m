@@ -56,8 +56,8 @@ NSString *currentSearchCategory;
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
     self.navigationItem.titleView = self.searchBar;
-    self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
     [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
     self.searchBar.placeholder = defaultSearchTerm;
 
@@ -66,9 +66,9 @@ NSString *currentSearchCategory;
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 
     // news header
-    [self.newsHeaderLabel.layer setBorderColor:[UIColor grayColor].CGColor];
-    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
-    [self.newsHeaderLabel.layer setCornerRadius:10.0f];
+    //[self.newsHeaderLabel.layer setBorderColor:[UIColor blueColor].CGColor];
+    //[self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    [self.newsHeaderLabel.layer setCornerRadius:7.0f];
     currentSearchCategory = defaultSearchCategory;
 
 }
@@ -98,7 +98,7 @@ NSString *currentSearchCategory;
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
 
     [cell.layer setBorderWidth:2.0f];
-    [cell.layer setCornerRadius:50.0f];
+    [cell.layer setCornerRadius:75.0f];
 
     if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row/2] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row/2];
