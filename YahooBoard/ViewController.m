@@ -11,9 +11,11 @@
 #import "TumblrClient.h"
 #import "FlickrDetailViewController.h"
 #import "TumblrDetailViewController.h"
+#import "SettingViewController.h"
 #import "NewsClient.h"
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate>
+
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate, SettingViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
@@ -31,6 +33,8 @@
 @end
 
 NSString *defaultSearchTerm = @"nba";
+NSString *defaultSearchCategory = @"Sports";
+NSString *currentSearchCategory;
 
 @implementation ViewController
 
@@ -57,6 +61,8 @@ NSString *defaultSearchTerm = @"nba";
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
+    
+    currentSearchCategory = defaultSearchCategory;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,7 +127,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 #pragma util method
 
 - (void)searchNewsData:(NSString *)searchKey {
-    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:@"\"Sports\"" sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
+    NSString *catString = [NSString stringWithFormat:@"\"%@\"", currentSearchCategory];
+    NSLog(@"cat is %@", catString);
+    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
         if (newsArray) {
             [self loadNewsLabel:newsArray];
         }
@@ -138,9 +146,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             displayText = news.content;
         }
         
-        NSLog(@"headline= %@", news.headline);
-        NSLog(@"content= %@", news.content);
-        NSLog(@"displayText %@", displayText);
+        //NSLog(@"headline= %@", news.headline);
+        //NSLog(@"content= %@", news.content);
+        //NSLog(@"displayText %@", displayText);
         /*
         NSLog(@"pubDate= %@", news.pubDate);
         NSLog(@"keywords= %@", news.keywordDict);
@@ -199,12 +207,12 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *query = self.searchBar.text;
     
- 
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
     [searchBar resignFirstResponder];
     [self searchFlickrData:query];
     [self searchTumblrData:query];
+    [self searchNewsData:query];
 }
 
 // Reset searchbar on cancel
@@ -229,4 +237,17 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     }
     
 }
+
+-(void)settingViewController:(SettingViewController *)controller didChangeCategory:(NSString*)category {
+    currentSearchCategory = category;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"home2setting"]) {
+        SettingViewController *controller = (SettingViewController *)segue.destinationViewController;
+        controller.currentCategory = currentSearchCategory;
+        controller.delegate = self;
+    }
+}
+
 @end
