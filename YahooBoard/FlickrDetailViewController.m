@@ -17,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self.flickrImageView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.flickrImageView.layer setBorderWidth:2.0f];
     self.flickrTitle.text = self.flickr.title;
     [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
     // Do any additional setup after loading the view, typically from a nib.
