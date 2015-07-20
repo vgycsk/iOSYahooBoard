@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
-@property (strong, nonatomic) NSInteger *queryCount;
+
 
 @end
 
