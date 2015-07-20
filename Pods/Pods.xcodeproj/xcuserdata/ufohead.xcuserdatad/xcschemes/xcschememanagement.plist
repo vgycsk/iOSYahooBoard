@@ -8,41 +8,70 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-BDBOAuth1Manager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-FlickrKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-JXHTTP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods-Spectacles.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-TMTumblrSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods-objectiveflickr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1AF11CA49580E71AE1F13C02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23DBDD3BE154BEBD083BCBF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +91,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>77850C1CB36F128FF939A633</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8547D73BD798A6E7ADBC3EA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C164F0ADD7BADF5B71E9F00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,6 +117,16 @@
 			<true/>
 		</dict>
 		<key>AC9F04D958C1B76463B87614</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5CB7C9EBDC1A66CAE3E9B8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E62AE3767DC2991D6C013F76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
