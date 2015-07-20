@@ -18,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
+
     self.flickrTitle.text = self.flickr.title;
+    [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -30,6 +31,7 @@
 
 - (void)setFlickr:(Flickr *)flickr{
     _flickr = flickr;
+    [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
 
 }
 

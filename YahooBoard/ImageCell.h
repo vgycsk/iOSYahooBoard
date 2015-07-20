@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *icon;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
+@property (weak, nonatomic) NSString *cellType;
 
 @property (nonatomic, weak) id<ImageCellDelegate> delegate;
 

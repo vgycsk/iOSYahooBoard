@@ -38,11 +38,12 @@
 }
 
 - (void)didClickOnPicture:(id)sender {
-    Flickr *flickr;
-    flickr = self.flickr;
-   
-    [self.delegate imageCell:self didTapFlickrPhoto:flickr];
     
+    if ([self.cellType isEqualToString:@"flickr"]) {
+        [self.delegate imageCell:self didTapFlickrPhoto:self.flickr];
+    } else {
+        [self.delegate imageCell:self didTapTumblrPhoto:self.tumblr];
+    }
 }
 
 

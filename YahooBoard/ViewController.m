@@ -40,7 +40,7 @@
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
     
-    [self searchFlickrData:@"moon"];
+    [self searchFlickrData:@"nba"];
     [self searchTumblrData:@"nba"];
     
     
@@ -54,6 +54,7 @@
     
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
+    self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,13 +81,21 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
+    
+    [cell.layer setBorderWidth:2.0f];
+    [cell.layer setCornerRadius:50.0f];
+    
     if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row];
         cell.delegate = self;
+        cell.cellType = @"flickr";
+        [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
     }
     if (indexPath.row %2 == 1 && self.tumblrImageArray[indexPath.row] != nil) {
         cell.tumblr = self.tumblrImageArray[indexPath.row];
         cell.delegate = self;
+        cell.cellType = @"tumblr";
+            [cell.layer setBorderColor:[UIColor blueColor].CGColor];
     }
     return cell;
 }
