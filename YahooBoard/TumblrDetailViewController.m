@@ -27,6 +27,9 @@
 - (void)setTumblr:(Tumblr *)tumblr{
     _tumblr = tumblr;
     [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
+    self.author.text = self.tumblr.blogName;
+    self.desc.text = self.tumblr.caption;
+    self.tags = self.tumblr.tags;
 }
 
 - (void)getSearchedPostWithTag:(NSString *)tag {
