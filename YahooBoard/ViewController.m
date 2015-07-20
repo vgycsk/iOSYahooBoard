@@ -35,8 +35,8 @@
 
 @end
 
-NSString *defaultSearchTerm = @"nba";
-NSString *defaultSearchCategory = @"Sports";
+NSString *defaultSearchTerm = @"pizza";
+NSString *defaultSearchCategory = @"Food";
 NSString *currentSearchCategory;
 
 @implementation ViewController
