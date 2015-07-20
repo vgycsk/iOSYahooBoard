@@ -119,7 +119,7 @@
         if (data) {
             //[self setImage:data];
             //NSLog(@"%@", data);
-            self.flickrImageArray = data;
+            self.flickrImageArray = [NSMutableArray arrayWithArray:data];
             [self.collectionView reloadData];
         } else {
             NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
@@ -133,7 +133,7 @@
     [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
             //NSLog(@"data %@", data);
-            self.tumblrImageArray = data;
+            self.tumblrImageArray = [NSMutableArray arrayWithArray:data];
             [self.collectionView reloadData];
         } else {
             NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
