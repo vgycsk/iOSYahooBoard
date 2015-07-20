@@ -239,7 +239,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-X5-0ZR">
                                 <rect key="frame" x="21" y="306" width="283" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -271,7 +271,9 @@
                             <constraint firstItem="No7-xa-Lms" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XOB-Jp-azg" secondAttribute="bottom" constant="8" id="BAE-xY-Efr"/>
                             <constraint firstItem="xlp-Gg-9N9" firstAttribute="trailing" secondItem="zhB-mL-b4k" secondAttribute="trailingMargin" constant="5" id="CVk-D8-6XH"/>
                             <constraint firstItem="XOB-Jp-azg" firstAttribute="top" secondItem="CNz-C4-fXd" secondAttribute="bottom" constant="8" id="I0L-1A-oCH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fQA-QA-BtL" secondAttribute="trailing" constant="5" id="KUJ-2r-ZoF"/>
                             <constraint firstAttribute="centerX" secondItem="L9G-pK-egl" secondAttribute="centerX" id="LWv-1X-58l"/>
+                            <constraint firstItem="XOB-Jp-azg" firstAttribute="trailing" secondItem="zhB-mL-b4k" secondAttribute="trailingMargin" constant="5" id="WPs-T0-zZY"/>
                             <constraint firstItem="CNz-C4-fXd" firstAttribute="leading" secondItem="zhB-mL-b4k" secondAttribute="leading" constant="21" id="gtG-TM-YNZ"/>
                             <constraint firstItem="xlp-Gg-9N9" firstAttribute="top" secondItem="lbH-vg-zSx" secondAttribute="bottom" constant="5" id="kVv-96-UkQ"/>
                             <constraint firstItem="CNz-C4-fXd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fQA-QA-BtL" secondAttribute="bottom" constant="13" id="nLZ-uf-c63"/>

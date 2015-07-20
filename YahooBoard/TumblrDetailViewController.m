@@ -16,11 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-    NSString *tag = @"nba";
-    [self getSearchedPostWithTag:tag];
-     self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
+    [self displayTumblrPostDetail:self.tumblr];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -31,7 +27,7 @@
     [self.image setImageWithURL: [NSURL URLWithString:self.tumblr.photoUrl]];
     self.author.text = self.tumblr.blogName;
     self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
-    self.tags = self.tumblr.tags;
+    self.tags.text = self.tumblr.tags[0];
 }
 
 
@@ -64,7 +60,7 @@
 
 - (void)displayTumblrPostDetail:(Tumblr *)post {
     self.author.text = post.blogName;
-    self.desc.text = post.caption;
+    self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
     self.tags.text = [post.tags componentsJoinedByString:@", "];
     [self setImageWithTumblr:post];
 }
