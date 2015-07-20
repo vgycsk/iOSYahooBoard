@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) NSMutableArray *flickrImageArray;
 @property (strong, nonatomic) NSMutableArray *tumblrImageArray;
+@property (strong, nonatomic) NSMutableArray *newsLists;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -31,7 +32,9 @@
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property  int queryStatusCount;
+@property  int newsCount;
 
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGesture;
 
 @end
 
@@ -49,7 +52,8 @@ NSString *currentSearchCategory;
 
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
-
+    self.newsLists = [[NSMutableArray alloc]init];
+    
     [self searchNewsData:defaultSearchTerm];
 
     // search bar
@@ -77,6 +81,13 @@ NSString *currentSearchCategory;
     [self searchFlickrData:defaultSearchTerm];
     [self searchTumblrData:defaultSearchTerm];
     [self searchNewsData:defaultSearchTerm];
+
+    // swipe news
+    self.swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(switchNews:)];
+    [self.swipeGesture setNumberOfTouchesRequired:1];
+    [self.swipeGesture setDirection:UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft];
+    NSLog(@"swipe %@", self.swipeGesture);
+    [self.newsHeaderLabel addGestureRecognizer:self.swipeGesture];
 
 }
 
@@ -111,13 +122,13 @@ NSString *currentSearchCategory;
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
         cell.cellType = @"flickr";
-        [cell.layer setBorderColor:[UIColor grayColor].CGColor];
+        [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
     }
     if (indexPath.row %2 == 1 && self.tumblrImageArray[(indexPath.row+1)/2] != nil) {
         cell.tumblr = self.tumblrImageArray[(indexPath.row+1)/2];
         cell.delegate = self;
         cell.cellType = @"tumblr";
-            [cell.layer setBorderColor:[UIColor grayColor].CGColor];
+            [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
     }
     return cell;
 }
@@ -152,6 +163,12 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)loadNewsLabel:(NSArray *)newsList {
     NSString *displayText = nil;
+    
+    if (newsList.count == 0) {
+        return;
+    }
+    self.newsLists = newsList;
+    self.newsCount = 1;
     for(News *news in newsList)
     {
         if (![news.headline isEqual:[NSNull null]]) {
@@ -173,6 +190,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             return;
         }
     }
+    
 }
 
 - (void)searchFlickrData:(NSString *)searchKey {
@@ -293,4 +311,31 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"Loading"];
 }
+
+- (IBAction)switchNews:(id)sender {
+    NSLog(@"swipe");
+    NSLog(@"%d",self.newsLists.count );
+    
+    NSLog(@"%d",self.newsCount);
+    
+    self.newsCount += 1;
+    if (self.newsLists.count > self.newsCount) {
+        NSLog(@"swipe2");
+        NSString *displayText = nil;
+        News *news = self.newsLists[self.newsCount];
+        if (![news.headline isEqual:[NSNull null]]) {
+            displayText = news.headline;
+        } else if (![news.content isEqual:[NSNull null]]) {
+            displayText = news.content;
+        }
+        
+        if (![displayText isEqual:[NSNull null]]) {
+            self.newsHeaderLabel.text = displayText;
+            return;
+        }
+    }
+
+}
+
+
 @end
