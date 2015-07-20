@@ -11,9 +11,11 @@
 #import "TumblrClient.h"
 #import "FlickrDetailViewController.h"
 #import "TumblrDetailViewController.h"
+#import "SettingViewController.h"
 #import "NewsClient.h"
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate>
+
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate, SettingViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
@@ -32,6 +34,8 @@
 @end
 
 NSString *defaultSearchTerm = @"nba";
+NSString *defaultSearchCategory = @"Sports";
+NSString *currentSearchCategory;
 
 @implementation ViewController
 
@@ -40,12 +44,12 @@ NSString *defaultSearchTerm = @"nba";
     // Do any additional setup after loading the view, typically from a nib.
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ImageCell"];
-    
+
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
-    
+
     [self searchNewsData:defaultSearchTerm];
-    
+
     // search bar
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
@@ -54,12 +58,16 @@ NSString *defaultSearchTerm = @"nba";
     self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
     self.searchBar.placeholder = defaultSearchTerm;
-    
+
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
-    
+
+
     // collection view
+
+
+    currentSearchCategory = defaultSearchCategory;
 
 }
 
@@ -77,21 +85,21 @@ NSString *defaultSearchTerm = @"nba";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     //return self.flickrImageArray.count + self.tumblrImageArray.count;
     return self.flickrImageArray.count;
-    
+
     //NSUInteger *count = (self.flickrImageArray.count < self.tumblrImageArray.count) ?self.flickrImageArray.count : self.tumblrImageArray.count;
-    
+
 
     //return self.tumblrImageArray.count;
-    
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    
+
     [cell.layer setBorderWidth:2.0f];
     [cell.layer setCornerRadius:50.0f];
-    
+
     if (indexPath.row %2 == 0 && self.flickrImageArray[indexPath.row] != nil) {
         cell.flickr = self.flickrImageArray[indexPath.row/2];
         cell.delegate = self;
@@ -119,13 +127,15 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (void)setupCollectionView {
     self.collectionView.delegate = self;
     self.collectionView.dataSource =self;
-    
+
 }
 
 #pragma util method
 
 - (void)searchNewsData:(NSString *)searchKey {
-    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:@"\"Sports\"" sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
+    NSString *catString = [NSString stringWithFormat:@"\"%@\"", currentSearchCategory];
+    NSLog(@"cat is %@", catString);
+    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
         if (newsArray) {
             [self loadNewsLabel:newsArray];
         }
@@ -141,10 +151,10 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
         } else if (![news.content isEqual:[NSNull null]]) {
             displayText = news.content;
         }
-        
-        NSLog(@"headline= %@", news.headline);
-        NSLog(@"content= %@", news.content);
-        NSLog(@"displayText %@", displayText);
+
+        //NSLog(@"headline= %@", news.headline);
+        //NSLog(@"content= %@", news.content);
+        //NSLog(@"displayText %@", displayText);
         /*
         NSLog(@"pubDate= %@", news.pubDate);
         NSLog(@"keywords= %@", news.keywordDict);
@@ -160,7 +170,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 }
 
 - (void)searchFlickrData:(NSString *)searchKey {
-    
+
     FlickrKitClient *client = [FlickrKitClient sharedInstance];
     [client searchPhotoWithText:searchKey page:10 pageCount:10 sortBy:@"relevance" completion:^(NSArray *data, NSError *error) {
         if (data) {
@@ -202,13 +212,13 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *query = self.searchBar.text;
-    
- 
+
     //[self fetchBusinessesWithQuery:query params:nil];
     [searchBar setShowsCancelButton:NO];
     [searchBar resignFirstResponder];
     [self searchFlickrData:query];
     [self searchTumblrData:query];
+    [self searchNewsData:query];
 }
 
 // Reset searchbar on cancel
@@ -223,7 +233,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     if(self.navigationController != nil) {
         [self.navigationController pushViewController:self.flickrDetailViewController  animated:YES];
     }
-    
+
 }
 
 -(void)imageCell:(ImageCell *)imageCell didTapTumblrPhoto:(Tumblr *)tumblr {
@@ -231,6 +241,19 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     if(self.navigationController != nil) {
         [self.navigationController pushViewController:self.tumblrDetailViewController  animated:YES];
     }
-    
+
 }
+
+-(void)settingViewController:(SettingViewController *)controller didChangeCategory:(NSString*)category {
+    currentSearchCategory = category;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"home2setting"]) {
+        SettingViewController *controller = (SettingViewController *)segue.destinationViewController;
+        controller.currentCategory = currentSearchCategory;
+        controller.delegate = self;
+    }
+}
+
 @end
