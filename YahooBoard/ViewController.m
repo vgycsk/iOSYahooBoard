@@ -35,8 +35,8 @@
 
 @end
 
-NSString *defaultSearchTerm = @"food";
-NSString *defaultSearchCategory = @"Foods";
+NSString *defaultSearchTerm = @"nba";
+NSString *defaultSearchCategory = @"Sports";
 NSString *currentSearchCategory;
 
 @implementation ViewController
@@ -141,8 +141,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)searchNewsData:(NSString *)searchKey {
     NSString *catString = [NSString stringWithFormat:@"\"%@\"", currentSearchCategory];
+    NSString *keyString = [NSString stringWithFormat:@"\"%@\"", searchKey];
     NSLog(@"cat is %@", catString);
-    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
+    [[NewsClient sharedInstance] queryNewsWithParameter:keyString category:catString sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
         if (newsArray) {
             [self loadNewsLabel:newsArray];
         }
