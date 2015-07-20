@@ -16,7 +16,7 @@
 NSArray *categories;
 //Foods, Style, Sports, World, Politics, Tech, Business, Opinion, Science, Health, Arts,Travel, Magazine
 - (void)viewDidLoad {
-    categories = @[@"Food", @"Style", @"Sports", @"World", @"Politics", @"Tech", @"Business", @"Opinion", @"Science", @"Health", @"Arts", @"Travel", @"Magazine"];
+    categories = @[@"All", @"Food", @"Style", @"Sports", @"World", @"Politics", @"Tech", @"Business", @"Opinion", @"Science", @"Health", @"Arts", @"Travel", @"Magazine"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
