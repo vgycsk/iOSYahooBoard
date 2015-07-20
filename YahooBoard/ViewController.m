@@ -210,13 +210,12 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             [self.flickrImageArray addObjectsFromArray:data];
             
             [self.collectionView reloadData];
-            self.queryStatusCount +=1;
-
-            if ( self.queryStatusCount == 2) {
-                [SVProgressHUD dismiss];
-            }
         } else {
             NSLog(@"[WARNING] No Flickr posts with tag %@ found", searchKey);
+        }
+        self.queryStatusCount +=1;
+        if ( self.queryStatusCount == 2) {
+            [SVProgressHUD dismiss];
         }
         loadMoreFlickr = NO;
     }];
@@ -229,13 +228,13 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             //NSLog(@"data %@", data);
             [self.tumblrImageArray addObjectsFromArray:data];
             [self.collectionView reloadData];
-            self.queryStatusCount +=1;
             
-            if ( self.queryStatusCount == 2) {
-                [SVProgressHUD dismiss];
-            }
         } else {
             NSLog(@"[WARNING] No tumblr posts with tag %@ found", searchKey);
+        }
+        self.queryStatusCount +=1;
+        if ( self.queryStatusCount == 2) {
+            [SVProgressHUD dismiss];
         }
         loadMoreTumblr = NO;
     }];
@@ -316,7 +315,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     UIColor *backgroundColor =[UIColor
                                colorWithRed:0.0
                                green:0.0
-                               blue:1.0
+                               blue:0.0
                                alpha:0.5];
     [SVProgressHUD setBackgroundColor:backgroundColor];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
