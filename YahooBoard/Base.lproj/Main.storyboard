@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,6 +20,10 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
                                 <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="382" id="Tx4-oO-C19"/>
+                                    <constraint firstAttribute="width" constant="320" id="v1n-Tj-k1q"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LOU-Gp-O6d">
                                     <size key="itemSize" width="155" height="155"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,8 +39,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsu-99-vfJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="G2b-C5-XV7"/>
-                                    <constraint firstAttribute="height" constant="121" id="Ngl-A5-Xis"/>
+                                    <constraint firstAttribute="height" constant="121" id="Ssl-tl-4OP"/>
+                                    <constraint firstAttribute="width" constant="320" id="SuF-K5-1ge"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,14 +49,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" id="8sn-9A-1rX"/>
-                            <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="D7N-4b-czy"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="DRV-nB-frz"/>
-                            <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="FSs-is-KLa"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QOS-wq-CF6"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="obb-AI-cx0"/>
-                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="uCP-FM-SpN"/>
-                            <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="wkh-1f-R5P"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="15p-d0-kC2"/>
+                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="ZXr-OO-hc9"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="1" id="btZ-0O-9mm"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="gGn-do-Fi1"/>
+                            <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" id="sf3-Jx-AeP"/>
+                            <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="zNC-zj-VoC"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zaP-rL-fjb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c9k-4q-vBR">
@@ -117,15 +119,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g9I-HN-ind">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9I-HN-ind">
                                 <rect key="frame" x="40" y="231" width="240" height="240"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="5rr-Ra-N9I"/>
-                                    <constraint firstAttribute="width" constant="240" id="s8R-DX-bpb"/>
-                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MD-3l-hhn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MD-3l-hhn">
                                 <rect key="frame" x="100" y="103" width="120" height="120"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,14 +131,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="g9I-HN-ind" firstAttribute="top" secondItem="1MD-3l-hhn" secondAttribute="bottom" constant="8" id="RUt-GO-Lrr"/>
-                            <constraint firstItem="1MD-3l-hhn" firstAttribute="leading" secondItem="yBP-sO-qfk" secondAttribute="leadingMargin" constant="84" id="YNS-kk-KMm"/>
-                            <constraint firstAttribute="centerX" secondItem="g9I-HN-ind" secondAttribute="centerX" id="dYe-QQ-HNI"/>
-                            <constraint firstItem="gE9-Y9-abh" firstAttribute="top" secondItem="g9I-HN-ind" secondAttribute="bottom" constant="97" id="gNF-z7-UNR"/>
-                            <constraint firstItem="1MD-3l-hhn" firstAttribute="centerX" secondItem="g9I-HN-ind" secondAttribute="centerX" id="uQ3-EU-deA"/>
-                            <constraint firstItem="1MD-3l-hhn" firstAttribute="top" secondItem="Aea-4P-ZBx" secondAttribute="bottom" constant="83" id="wGJ-8k-17s"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rSg-2w-q4G"/>
                     <connections>
@@ -164,7 +154,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9G-pK-egl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9G-pK-egl">
                                 <rect key="frame" x="16" y="72" width="288" height="204"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-QA-BtL">
@@ -193,9 +183,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="L9G-pK-egl" secondAttribute="centerX" id="7yb-zv-nrc"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2l9-vg-dhD"/>
                     <connections>
