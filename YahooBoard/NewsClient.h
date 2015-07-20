@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "News.h"
 
 @interface NewsClient : NSObject
 - (void) queryNewsWithParameter:(NSString *)searchWord category:(NSString *)category sortBy:(NSString *)sortBy completion:(void (^)(NSArray *newsArray, NSError *error))callback;
-- (void) queryNews:(NSString *)queryString;
+//- (void) queryNews:(NSString *)queryString;
 + (NewsClient *)sharedInstance;
 @property (strong, nonatomic) NSMutableArray *newsList;
 @end

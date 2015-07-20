@@ -11,6 +11,7 @@
 #import "TumblrClient.h"
 #import "FlickrDetailViewController.h"
 #import "TumblrDetailViewController.h"
+#import "NewsClient.h"
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate,ImageCellDelegate>
 
@@ -29,6 +30,8 @@
 
 @end
 
+NSString *defaultSearchTerm = @"nba";
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -40,9 +43,7 @@
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
     
-    [self searchFlickrData:@"nba"];
-    [self searchTumblrData:@"nba"];
-    
+    [self searchNewsData:defaultSearchTerm];
     
     // search bar
     self.searchBar = [[UISearchBar alloc] init];
@@ -51,6 +52,7 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
     self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:[UIColor whiteColor]];
+    self.searchBar.placeholder = defaultSearchTerm;
     
     //setup controler
     self.flickrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flickrDetailView"];
@@ -108,9 +110,42 @@
     
 }
 
-
-
 #pragma util method
+
+- (void)searchNewsData:(NSString *)searchKey {
+    [[NewsClient sharedInstance] queryNewsWithParameter:searchKey category:@"\"Sports\"" sortBy:@"newest" completion:^(NSArray *newsArray, NSError *error) {
+        if (newsArray) {
+            [self loadNewsLabel:newsArray];
+        }
+    }];
+}
+
+- (void)loadNewsLabel:(NSArray *)newsList {
+    NSString *displayText = nil;
+    for(News *news in newsList)
+    {
+        if (![news.headline isEqual:[NSNull null]]) {
+            displayText = news.headline;
+        } else if (![news.content isEqual:[NSNull null]]) {
+            displayText = news.content;
+        }
+        
+        NSLog(@"headline= %@", news.headline);
+        NSLog(@"content= %@", news.content);
+        NSLog(@"displayText %@", displayText);
+        /*
+        NSLog(@"pubDate= %@", news.pubDate);
+        NSLog(@"keywords= %@", news.keywordDict);
+        NSLog(@"image= %@", news.thumbWideImageUrl);
+        */
+        if (![displayText isEqual:[NSNull null]]) {
+            self.newsHeaderLabel.text = displayText;
+            [self searchFlickrData:defaultSearchTerm];
+            [self searchTumblrData:defaultSearchTerm];
+            return;
+        }
+    }
+}
 
 - (void)searchFlickrData:(NSString *)searchKey {
     
@@ -128,7 +163,6 @@
 }
 
 - (void)searchTumblrData:(NSString *)searchKey {
-
     double timestamp =[[NSDate date] timeIntervalSince1970] * 1000;
     [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:20 before:timestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
