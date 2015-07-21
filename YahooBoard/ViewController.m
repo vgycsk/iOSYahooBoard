@@ -198,7 +198,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     if (newsList.count == 0) {
         return;
     }
-    self.newsLists = newsList;
+    self.newsLists = [NSMutableArray arrayWithArray:newsList];
     self.newsCount = 1;
     for(News *news in newsList)
     {
@@ -249,7 +249,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:10 before:currentTumblrTimestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
             //NSLog(@"data %@", data);
-            //currentTumblrTimestamp = data[data count].
+            Tumblr *t = data[[data count]-1];
+            currentTumblrTimestamp = t.timestamp;
+            NSLog(@"time stamp is %f", currentTumblrTimestamp);
             [self.tumblrImageArray addObjectsFromArray:data];
             [self.collectionView reloadData];
             

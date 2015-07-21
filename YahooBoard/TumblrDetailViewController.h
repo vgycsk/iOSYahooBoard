@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *desc;
 @property (weak, nonatomic) IBOutlet UILabel *author;
 @property (weak, nonatomic) IBOutlet UILabel *tags;
+@property (weak, nonatomic) IBOutlet UIScrollView *descScrollView;
 
 
 @end

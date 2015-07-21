@@ -28,6 +28,12 @@
     self.author.text = self.tumblr.blogName;
     self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
     self.tags.text = self.tumblr.tags[0];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.desc sizeToFit];
+        //self.desc.preferredMaxLayoutWidth = self.desc.bounds.size.width;
+        [self.descScrollView setContentSize:self.desc.frame.size];
+    });
 }
 
 
