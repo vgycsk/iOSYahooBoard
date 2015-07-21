@@ -72,7 +72,7 @@
     [face addTarget:self action:@selector(onFlickrBar) forControlEvents:UIControlEventTouchUpInside];
     [face.layer setBorderColor:[UIColor whiteColor].CGColor];
     [face.layer setBorderWidth:3.0f];
-    //[face.layer setCornerRadius:5.0f];
+    [face.layer setCornerRadius:5.0f];
     
     UIBarButtonItem *flickrBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
     self.navigationItem.rightBarButtonItem = flickrBtn;
