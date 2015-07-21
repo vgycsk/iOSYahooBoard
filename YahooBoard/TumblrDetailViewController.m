@@ -71,4 +71,9 @@
     [self.image setImageWithURL:imageUrl];
 }
 
+- (IBAction)onTumblrIcon:(id)sender {
+    NSURL *url = [NSURL URLWithString:self.tumblr.rawUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 @end

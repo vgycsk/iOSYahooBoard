@@ -249,6 +249,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     [[TumblrClient sharedInstance] searchPostWithTag:searchKey limit:10 before:currentTumblrTimestamp type:@"photo" completion:^(NSArray *data, NSError *error) {
         if ([data count]) {
             //NSLog(@"data %@", data);
+            //currentTumblrTimestamp = data[data count].
             [self.tumblrImageArray addObjectsFromArray:data];
             [self.collectionView reloadData];
             

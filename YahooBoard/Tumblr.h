@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSDictionary *rawData;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *photoUrl;
+@property (nonatomic, strong) NSString *rawUrl;
 @property double timestamp;
 
 - (Tumblr *) initWithDictionary:(NSDictionary *)dictionary;

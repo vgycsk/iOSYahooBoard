@@ -19,6 +19,7 @@
     self.photos = dictionary[@"photos"];
     self.photoUrl = dictionary[@"photos"][0][@"alt_sizes"][2][@"url"];
     self.tags = dictionary[@"tags"];
+    self.rawUrl = dictionary[@"post_url"];
     //NSLog(@"photo is %@ %@", self.photoUrl, self.photos);
     return self;
 }
