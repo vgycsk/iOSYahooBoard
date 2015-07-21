@@ -31,9 +31,9 @@ A nonstop flowview include flickr, tumblr & news etc. Just like Flipboard
 - [Objectiveflickr] (https://github.com/lukhnos/objectiveflickr)
 
 
-####News
-- News API
-- http://www.alchemyapi.com/api/newsapi
+####News (Yahoo News API not open)
+- News API from NewYork Times
+- http://www.nytimes.com/
 
 #### Walktrough
 ![Video Walkthrough](YahooBoard.gif)
