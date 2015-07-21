@@ -22,6 +22,7 @@
     self.flickrTitle.text = self.flickr.title;
     [self.flickrImageView setImageWithURL:self.flickr.photoUrl];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setFlickrButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,5 +58,24 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
+-(void) onFlickrBar{
+    NSURL *url = [NSURL URLWithString:self.flickr.rawUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void)setFlickrButton{
+    UIImage *flickrImage = [UIImage imageNamed:@"flickr2.png"];
+    UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
+    face.bounds = CGRectMake( 0, 0, 40, 40 );
+    [face setImage:flickrImage forState:UIControlStateNormal];
+    //[face setBackgroundImage:flickrImage forState:UIControlStateNormal];
+    [face addTarget:self action:@selector(onFlickrBar) forControlEvents:UIControlEventTouchUpInside];
+    //[face.layer setBorderColor:[UIColor whiteColor].CGColor];
+    //[face.layer setBorderWidth:1.0f];
+    //[face.layer setCornerRadius:5.0f];
+    
+    UIBarButtonItem *flickrBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
+    self.navigationItem.rightBarButtonItem = flickrBtn;
+}
 
 @end

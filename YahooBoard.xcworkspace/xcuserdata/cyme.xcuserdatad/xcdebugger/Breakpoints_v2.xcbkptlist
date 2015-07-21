@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YahooBoard/FlickrDetailViewController.m"
-            timestampString = "458899720.217224"
+            timestampString = "459165302.42644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-setFlickr:"
             landmarkType = "5">
          </BreakpointContent>

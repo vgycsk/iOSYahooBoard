@@ -17,7 +17,7 @@
     [super viewDidLoad];
     
     [self displayTumblrPostDetail:self.tumblr];
-    
+    [self setTumblrButton];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -80,6 +80,26 @@
 - (IBAction)onTumblrIcon:(id)sender {
     NSURL *url = [NSURL URLWithString:self.tumblr.rawUrl];
     [[UIApplication sharedApplication] openURL:url];
+}
+
+-(void) onTumblrBar{
+    NSURL *url = [NSURL URLWithString:self.tumblr.rawUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void)setTumblrButton{
+    UIImage *tumblrImage = [UIImage imageNamed:@"tumblr.png"];
+    UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
+    face.bounds = CGRectMake( 0, 0, 40, 40 );
+    //[face setImage:tumblrImage forState:UIControlStateNormal];
+    [face setBackgroundImage:tumblrImage forState:UIControlStateNormal];
+    [face addTarget:self action:@selector(onTumblrBar) forControlEvents:UIControlEventTouchUpInside];
+    [face.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [face.layer setBorderWidth:1.0f];
+    [face.layer setCornerRadius:5.0f];
+    
+    UIBarButtonItem *tumblrBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
+    self.navigationItem.rightBarButtonItem = tumblrBtn;
 }
 
 @end
