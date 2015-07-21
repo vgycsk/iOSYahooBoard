@@ -353,6 +353,9 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 - (IBAction)switchNews:(id)sender {
 
     self.newsCount += 1;
+    if (self.newsLists.count == self.newsCount) {
+        self.newsCount = 1;
+    }
     if (self.newsLists.count > self.newsCount) {
         NSLog(@"swipe2");
         NSString *displayText = nil;
