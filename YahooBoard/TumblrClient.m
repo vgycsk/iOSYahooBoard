@@ -63,7 +63,7 @@ NSString * const kTumblrBaseAPIUrl = @"http://api.tumblr.com";
 }
 
 - (void) searchPostWithTag:(NSString *)tag limit:(int)limit before:(int)timestamp type:(NSString *)type completion:(void (^)(NSArray *, NSError *))callback{
-    NSString *url = [NSString stringWithFormat:@"v2/tagged?tag=%@&api_key=%@", tag, kTumblrConsumerKey];
+    NSString *url = [NSString stringWithFormat:@"v2/tagged?tag=%@&api_key=%@&before=%d", tag, kTumblrConsumerKey, timestamp];
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *posts = [Tumblr tumblrsWithArrayFromRawResponse:responseObject filtredByType:type];
