@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) NSMutableArray *flickrImageArray;
 @property (strong, nonatomic) NSMutableArray *tumblrImageArray;
+@property (strong, nonatomic) NSMutableArray *newsLists;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -31,7 +32,9 @@
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property  int queryStatusCount;
+@property  int newsCount;
 
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGesture;
 
 @end
 
@@ -56,7 +59,8 @@ BOOL loadMoreTumblr;
 
     self.flickrImageArray = [[NSMutableArray alloc]init];
     self.tumblrImageArray = [[NSMutableArray alloc]init];
-
+    self.newsLists = [[NSMutableArray alloc]init];
+    
     [self searchNewsData:defaultSearchTerm];
 
     // search bar
@@ -73,8 +77,8 @@ BOOL loadMoreTumblr;
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 
     // news header
-    //[self.newsHeaderLabel.layer setBorderColor:[UIColor blueColor].CGColor];
-    //[self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    [self.newsHeaderLabel.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
     [self.newsHeaderLabel.layer setCornerRadius:7.0f];
     currentSearchCategory = defaultSearchCategory;
     currentSearchTerm = defaultSearchTerm;
@@ -86,7 +90,19 @@ BOOL loadMoreTumblr;
     [self searchNewsData:defaultSearchTerm];
     
     [self resetSearch];
+
+
+    // swipe news
+    self.swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(switchNews:)];
+    [self.swipeGesture setNumberOfTouchesRequired:1];
+    [self.swipeGesture setDirection:UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft];
+    NSLog(@"swipe %@", self.swipeGesture);
+    [self.newsHeaderLabel addGestureRecognizer:self.swipeGesture];
 }
+
+
+
+
 
 - (void)resetSearch {
     currentTumblrTimestamp = [[NSDate date] timeIntervalSince1970] * 1000;
@@ -178,6 +194,12 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 - (void)loadNewsLabel:(NSArray *)newsList {
     NSString *displayText = nil;
+    
+    if (newsList.count == 0) {
+        return;
+    }
+    self.newsLists = newsList;
+    self.newsCount = 1;
     for(News *news in newsList)
     {
         if (![news.headline isEqual:[NSNull null]]) {
@@ -199,6 +221,7 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
             return;
         }
     }
+    
 }
 
 - (void)searchFlickrData:(NSString *)searchKey {
@@ -323,4 +346,27 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"Loading"];
 }
+
+- (IBAction)switchNews:(id)sender {
+
+    self.newsCount += 1;
+    if (self.newsLists.count > self.newsCount) {
+        NSLog(@"swipe2");
+        NSString *displayText = nil;
+        News *news = self.newsLists[self.newsCount];
+        if (![news.headline isEqual:[NSNull null]]) {
+            displayText = news.headline;
+        } else if (![news.content isEqual:[NSNull null]]) {
+            displayText = news.content;
+        }
+        
+        if (![displayText isEqual:[NSNull null]]) {
+            self.newsHeaderLabel.text = displayText;
+            return;
+        }
+    }
+
+}
+
+
 @end
