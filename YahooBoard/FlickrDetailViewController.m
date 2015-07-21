@@ -52,6 +52,10 @@
     [self.flickrImageView setImageWithURL:flickrObj.photoUrl];
 }
 
+- (IBAction)onFlickrIcon:(id)sender {
+    NSURL *url = [NSURL URLWithString:self.flickr.rawUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
 
 
 @end
