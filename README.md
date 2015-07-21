@@ -34,3 +34,6 @@ A nonstop flowview include flickr, tumblr & news etc. Just like Flipboard
 ####News
 - News API
 - http://www.alchemyapi.com/api/newsapi
+
+#### Walktrough
+![Video Walkthrough](YahooBoard.gif)
