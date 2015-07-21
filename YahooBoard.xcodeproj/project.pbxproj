@@ -17,6 +17,7 @@
 		334892321B59E46900BD182D /* TumblrClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 334892311B59E46900BD182D /* TumblrClient.m */; };
 		3356090C1B589CCA003DB944 /* TumblrDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3356090B1B589CCA003DB944 /* TumblrDetailViewController.m */; };
 		3361F3821B5A3AE800FB4E09 /* Tumblr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3361F3811B5A3AE800FB4E09 /* Tumblr.m */; };
+		336EB7C51B5E4EE600E24244 /* flickr2.png in Resources */ = {isa = PBXBuildFile; fileRef = 336EB7C41B5E4EE600E24244 /* flickr2.png */; };
 		81288E44036C008F1EC7E5FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37F31571D529DA2A008A2CF /* libPods.a */; };
 		8F25878B1B5D054A008145D0 /* flickr.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F25878A1B5D054A008145D0 /* flickr.png */; };
 		8F91D2C31B5CE30500B824F8 /* tumblr.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F91D2C21B5CE30500B824F8 /* tumblr.png */; };
@@ -64,6 +65,7 @@
 		3356090B1B589CCA003DB944 /* TumblrDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrDetailViewController.m; sourceTree = "<group>"; };
 		3361F3801B5A3AE800FB4E09 /* Tumblr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tumblr.h; sourceTree = "<group>"; };
 		3361F3811B5A3AE800FB4E09 /* Tumblr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tumblr.m; sourceTree = "<group>"; };
+		336EB7C41B5E4EE600E24244 /* flickr2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flickr2.png; path = image/flickr2.png; sourceTree = "<group>"; };
 		839995F419FA369CB687E300 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8F25878A1B5D054A008145D0 /* flickr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flickr.png; sourceTree = "<group>"; };
 		8F91D2C21B5CE30500B824F8 /* tumblr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tumblr.png; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		9B170F981B58AB1500D32EEB /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				336EB7C41B5E4EE600E24244 /* flickr2.png */,
 				8F91D2C21B5CE30500B824F8 /* tumblr.png */,
 				8F25878A1B5D054A008145D0 /* flickr.png */,
 				9B17FDF81B5CA8A500EE738A /* HomeBackground.png */,
@@ -344,6 +347,7 @@
 				8F91D2C31B5CE30500B824F8 /* tumblr.png in Resources */,
 				9B17FDF91B5CA8A500EE738A /* HomeBackground.png in Resources */,
 				8FFFEE851B4D0F930056CF6D /* Main.storyboard in Resources */,
+				336EB7C51B5E4EE600E24244 /* flickr2.png in Resources */,
 				8F25878B1B5D054A008145D0 /* flickr.png in Resources */,
 				9B1BE6E51B5A6C3C00F6D933 /* ImageCell.xib in Resources */,
 				8FFFEE8A1B4D0F930056CF6D /* LaunchScreen.xib in Resources */,
