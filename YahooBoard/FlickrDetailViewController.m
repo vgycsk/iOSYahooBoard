@@ -68,10 +68,10 @@
     UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
     face.bounds = CGRectMake( 0, 0, 40, 40 );
     [face setImage:flickrImage forState:UIControlStateNormal];
-    //[face setBackgroundImage:flickrImage forState:UIControlStateNormal];
+    
     [face addTarget:self action:@selector(onFlickrBar) forControlEvents:UIControlEventTouchUpInside];
-    //[face.layer setBorderColor:[UIColor whiteColor].CGColor];
-    //[face.layer setBorderWidth:1.0f];
+    [face.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [face.layer setBorderWidth:2.0f];
     //[face.layer setCornerRadius:5.0f];
     
     UIBarButtonItem *flickrBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
