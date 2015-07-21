@@ -48,6 +48,7 @@
                                 <color key="highlightedColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="34B-jR-Oam" appends="YES" id="EPg-EC-wR6"/>
+                                    <outletCollection property="gestureRecognizers" destination="e9J-kA-D92" appends="YES" id="tUB-zp-gXX"/>
                                 </connections>
                             </label>
                         </subviews>
@@ -95,6 +96,11 @@
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="hhe-s5-J7I"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="e9J-kA-D92">
+                    <connections>
+                        <action selector="onEnlargingNewsLabel:" destination="vXZ-lx-hvc" id="fCr-mm-ACV"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3126" y="341"/>
         </scene>

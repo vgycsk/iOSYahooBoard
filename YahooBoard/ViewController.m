@@ -48,6 +48,9 @@ int currentFlickrPage;
 double currentTumblrTimestamp;
 BOOL loadMoreFlickr;
 BOOL loadMoreTumblr;
+CGPoint panNewsStartLocation;
+CGPoint panNewsStopLocation;
+CGRect defaultNewsFrame;
 
 @implementation ViewController
 
@@ -98,11 +101,13 @@ BOOL loadMoreTumblr;
     [self.swipeGesture setDirection:UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft];
     NSLog(@"swipe %@", self.swipeGesture);
     [self.newsHeaderLabel addGestureRecognizer:self.swipeGesture];
+    
 }
 
-
-
-
+- (void)viewDidAppear:(BOOL)animated {
+    defaultNewsFrame = self.newsHeaderLabel.frame;
+    NSLog(@"------------ %f", defaultNewsFrame.size.width);
+}
 
 - (void)resetSearch {
     currentTumblrTimestamp = [[NSDate date] timeIntervalSince1970] * 1000;
@@ -357,7 +362,6 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
         self.newsCount = 1;
     }
     if (self.newsLists.count > self.newsCount) {
-        NSLog(@"swipe2");
         NSString *displayText = nil;
         News *news = self.newsLists[self.newsCount];
         if (![news.headline isEqual:[NSNull null]]) {
@@ -374,5 +378,36 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 
 }
 
+- (IBAction)onEnlargingNewsLabel:(UIPanGestureRecognizer *)sender {
+    //NSLog(@"on enlarge label");
+    //self.normalFrame = CGRectMake(cFrame.origin.x, self.frame.origin.y, cFrame.size.width, self.frame.size.height);
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        panNewsStartLocation = [sender locationInView:self.newsHeaderLabel];
+    } else if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint stopLocation = [sender locationInView:self.newsHeaderLabel];
+        CGFloat dy = (stopLocation.y - panNewsStartLocation.y) * -1;
+        CGFloat dx = (stopLocation.x - panNewsStartLocation.x);
+        
+        if (fabs(dx) > 40) {
+            [self switchNews:sender];
+            return;
+        }
+        
+        if (dy >= -20) {
+            [UIView animateWithDuration:0.05 animations:^{
+                self.newsHeaderLabel.frame = defaultNewsFrame;
+                //[self.newsHeaderLabel sizeToFit];
+            }];
+        } else {
+            [UIView animateWithDuration:0.2 animations:^{
+                CGRect cFrame = defaultNewsFrame;
+                self.newsHeaderLabel.frame = CGRectMake(cFrame.origin.x, cFrame.origin.y, cFrame.size.width, cFrame.size.height - dy);
+            }];
+            
+        }
+    }
+    
+}
 
 @end
