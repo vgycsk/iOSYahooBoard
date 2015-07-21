@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-Dj-GpM">
+                                <rect key="frame" x="0.0" y="184" width="320" height="2"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-ri-FTs">
                                 <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,11 +37,11 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Loading" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsu-99-vfJ">
-                                <rect key="frame" x="5" y="64" width="310" height="122"/>
+                                <rect key="frame" x="5" y="64" width="310" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="122" id="Er1-DQ-IcM"/>
+                                    <constraint firstAttribute="height" constant="120" id="d5b-tB-Kzd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,17 +51,20 @@
                                 </connections>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" constant="5" id="ChJ-OU-zSk"/>
-                            <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="DuE-Ng-fNL"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kjf-Pc-4UC"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" id="S3C-Du-b6v"/>
-                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" id="Uhc-JS-wxU"/>
-                            <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="aST-AQ-Usc"/>
-                            <constraint firstAttribute="centerX" secondItem="lsu-99-vfJ" secondAttribute="centerX" id="ck1-n3-n7e"/>
-                            <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="j38-jZ-iN5"/>
-                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="wfr-DN-G8j"/>
+                            <constraint firstItem="aOs-Dj-GpM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Boo-vq-yIX"/>
+                            <constraint firstAttribute="trailing" secondItem="lsu-99-vfJ" secondAttribute="trailing" constant="5" id="LbD-2I-O1G"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="aOs-Dj-GpM" secondAttribute="bottom" id="Qpn-Xc-g2p"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="SCi-Cm-537"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" constant="2" id="UUf-1T-raP"/>
+                            <constraint firstAttribute="trailing" secondItem="aOs-Dj-GpM" secondAttribute="trailing" id="ZWy-Vh-Q5d"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="top" secondItem="roy-f0-eUW" secondAttribute="bottom" id="cDV-En-Rpz"/>
+                            <constraint firstItem="aOs-Dj-GpM" firstAttribute="top" secondItem="lsu-99-vfJ" secondAttribute="bottom" id="h3l-DB-kwy"/>
+                            <constraint firstItem="fxX-ri-FTs" firstAttribute="top" secondItem="aOs-Dj-GpM" secondAttribute="bottom" id="j09-Zm-KbC"/>
+                            <constraint firstAttribute="trailing" secondItem="fxX-ri-FTs" secondAttribute="trailing" id="lbB-Ck-iQD"/>
+                            <constraint firstItem="hmQ-TE-p1s" firstAttribute="top" secondItem="fxX-ri-FTs" secondAttribute="bottom" id="sPl-4h-snp"/>
+                            <constraint firstItem="lsu-99-vfJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="saF-53-Jse"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c9k-4q-vBR">
