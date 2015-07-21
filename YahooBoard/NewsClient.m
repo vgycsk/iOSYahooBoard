@@ -30,25 +30,46 @@ NSString * const imageBaseUrl = @"http://www.nytimes.com/";
 
 /*
   searchWord: search text
-  category: Foods, Style, Sports, World, Politics, Tech, Business, Opinion, Science, Health, Arts,Travel, Magazine
+  category: Food, Style, Sports, World, Politics, Tech, Business, Opinion, Science, Health, Arts,Travel, Magazine
   sortBy: newest, oldest
 */
 
 - (void) queryNewsWithParameter:(NSString *)searchWord category:(NSString *)category sortBy:(NSString *)sortBy completion:(void (^)(NSArray *newsArray, NSError *error))callback
 {
-    NSString *queryString;
-    if ( [searchWord isEqualToString:@""] || searchWord == nil)
+    NSArray *categoryList = [NSArray arrayWithObjects:@"\"Food\"", @"\"Sports\"", @"\"Style\"", @"\"World\"", @"\"Politics\"", @"\"Tech\"", @"\"Business\"", @"\"Opinion\"", @"\"Science\"", @"\"Health\"", @"\"Arts\"",@"\"Travel\"", @"\"Magazine\"",nil];
+    
+    NSMutableString *queryString = [[NSMutableString alloc] init];
+    if ( [searchWord isEqualToString:@""] || searchWord == NULL)
     {
-        queryString = [[NSString alloc] initWithFormat:@"fq=news_desk:(\"%@\")&sort=%@",category,sortBy ];
-        
+        [ queryString appendFormat:@""];
     }
     else
     {
-        queryString = [[NSString alloc] initWithFormat:@"q=%@&fq=news_desk:(\"%@\")&sort=%@",searchWord,category,sortBy ];
-
+        [ queryString appendFormat:@"q=%@&",searchWord ];
     }
-    NSString *apiRawUrlString = [[NSString alloc] initWithFormat:@"%@?%@&api-key=%@",newAPIBaseUrl,queryString,newsAPIKey];
+    if ( [categoryList containsObject:category] )
+    {
+        [ queryString appendFormat:@"fq=news_desk:(\"%@\")&",category ];
+    }
+    else
+    {
+        [ queryString appendFormat:@"&"];
+        
+    }
+    if ( [sortBy isEqualToString:@""] )
+    {
+        [ queryString appendFormat:@"&"];
+   
+    }
+    else
+    {
+        [ queryString appendFormat:@"sort=%@", sortBy];
+    }
     
+                   
+    NSString *apiRawUrlString = [[NSString alloc] initWithFormat:@"%@?%@&api-key=%@",newAPIBaseUrl,queryString,newsAPIKey];
+     NSLog(@"DEBUG %@,%@,%@",searchWord,category,sortBy);
+    NSLog(@"DEBUG %@",apiRawUrlString);
     NSString *apiUrlString = [apiRawUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     dispatch_queue_t concurrentQueue =
