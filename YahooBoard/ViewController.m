@@ -77,9 +77,9 @@ BOOL loadMoreTumblr;
     self.tumblrDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tumblrDetailView"];
 
     // news header
-    [self.newsHeaderLabel.layer setBorderColor:[UIColor whiteColor].CGColor];
-    [self.newsHeaderLabel.layer setBorderWidth:1.0f];
-    [self.newsHeaderLabel.layer setCornerRadius:7.0f];
+    //[self.newsHeaderLabel.layer setBorderColor:[UIColor whiteColor].CGColor];
+    //[self.newsHeaderLabel.layer setBorderWidth:1.0f];
+    //[self.newsHeaderLabel.layer setCornerRadius:7.0f];
     currentSearchCategory = defaultSearchCategory;
     currentSearchTerm = defaultSearchTerm;
     
@@ -338,8 +338,8 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
     
     UIColor *backgroundColor =[UIColor
                                colorWithRed:0.0
-                               green:0.0
-                               blue:0.0
+                               green:0.5
+                               blue:1.0
                                alpha:0.5];
     [SVProgressHUD setBackgroundColor:backgroundColor];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
