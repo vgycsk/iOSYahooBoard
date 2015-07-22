@@ -244,13 +244,13 @@
                                 <rect key="frame" x="16" y="105" width="288" height="204"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-X5-0ZR">
-                                <rect key="frame" x="20" y="336" width="280" height="20.5"/>
+                                <rect key="frame" x="20" y="336" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="tags" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOB-Jp-azg">
-                                <rect key="frame" x="75" y="62" width="270" height="20.5"/>
+                                <rect key="frame" x="75" y="62" width="270" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -259,7 +259,7 @@
                                 <rect key="frame" x="20" y="384" width="280" height="135"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-QA-BtL">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -267,7 +267,7 @@
                                 </subviews>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNz-C4-fXd">
-                                <rect key="frame" x="20" y="62" width="37" height="20.5"/>
+                                <rect key="frame" x="20" y="62" width="37" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -276,12 +276,13 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="XOB-Jp-azg" secondAttribute="trailing" constant="8" id="BYR-SF-u2a"/>
+                            <constraint firstAttribute="centerX" secondItem="L9G-pK-egl" secondAttribute="centerX" id="Evc-xg-ai4"/>
                             <constraint firstItem="ARh-lM-pNX" firstAttribute="leading" secondItem="zhB-mL-b4k" secondAttribute="leading" constant="20" id="Lsy-mk-mEF"/>
                             <constraint firstItem="L9G-pK-egl" firstAttribute="top" secondItem="CNz-C4-fXd" secondAttribute="bottom" constant="22.5" id="S26-2x-s5a"/>
                             <constraint firstItem="No7-xa-Lms" firstAttribute="top" secondItem="ARh-lM-pNX" secondAttribute="bottom" constant="49" id="SVA-Gw-6Ol"/>
                             <constraint firstAttribute="trailing" secondItem="ARh-lM-pNX" secondAttribute="trailing" constant="20" id="WSP-KJ-dDm"/>
                             <constraint firstItem="CNz-C4-fXd" firstAttribute="leading" secondItem="zhB-mL-b4k" secondAttribute="leadingMargin" constant="4" id="gDx-CM-P6c"/>
-                            <constraint firstItem="L9G-pK-egl" firstAttribute="leading" secondItem="zhB-mL-b4k" secondAttribute="leading" constant="16" id="hAL-dC-yzn"/>
+                            <constraint firstItem="L9G-pK-egl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zhB-mL-b4k" secondAttribute="leading" constant="16" id="hAL-dC-yzn"/>
                             <constraint firstItem="XOB-Jp-azg" firstAttribute="top" secondItem="lbH-vg-zSx" secondAttribute="bottom" constant="42" id="i6G-lS-L8Z"/>
                             <constraint firstItem="XOB-Jp-azg" firstAttribute="leading" secondItem="CNz-C4-fXd" secondAttribute="trailing" constant="18" id="mqV-js-HUu"/>
                             <constraint firstItem="CNz-C4-fXd" firstAttribute="top" secondItem="lbH-vg-zSx" secondAttribute="bottom" constant="42" id="n8t-Wg-wFB"/>
@@ -289,7 +290,7 @@
                             <constraint firstItem="Re5-X5-0ZR" firstAttribute="top" secondItem="L9G-pK-egl" secondAttribute="bottom" constant="27" id="rlO-SN-AK4"/>
                             <constraint firstItem="Re5-X5-0ZR" firstAttribute="leading" secondItem="zhB-mL-b4k" secondAttribute="leading" constant="20" id="tkI-V2-zMw"/>
                             <constraint firstItem="ARh-lM-pNX" firstAttribute="top" secondItem="Re5-X5-0ZR" secondAttribute="bottom" constant="27.5" id="vsc-8d-uLx"/>
-                            <constraint firstAttribute="trailing" secondItem="L9G-pK-egl" secondAttribute="trailing" constant="16" id="wTE-ea-yrP"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L9G-pK-egl" secondAttribute="trailing" constant="16" id="wTE-ea-yrP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2l9-vg-dhD"/>
