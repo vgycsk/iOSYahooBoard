@@ -106,7 +106,6 @@ CGRect defaultNewsFrame;
 
 - (void)viewDidAppear:(BOOL)animated {
     defaultNewsFrame = self.newsHeaderLabel.frame;
-    NSLog(@"------------ %f", defaultNewsFrame.size.width);
 }
 
 - (void)resetSearch {
@@ -148,7 +147,7 @@ CGRect defaultNewsFrame;
         NSLog(@"load more tumblr");
         [self searchTumblrData:currentSearchTerm];
     }
-    
+
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
 
     [cell.layer setBorderWidth:2.0f];
@@ -397,11 +396,13 @@ collectionView layout:(UICollectionViewLayout *)collectionViewLayout
         if (dy >= -20) {
             [UIView animateWithDuration:0.05 animations:^{
                 self.newsHeaderLabel.frame = defaultNewsFrame;
+                self.newsHeaderLabel.alpha = 1;
                 //[self.newsHeaderLabel sizeToFit];
             }];
         } else {
             [UIView animateWithDuration:0.2 animations:^{
                 CGRect cFrame = defaultNewsFrame;
+                self.newsHeaderLabel.alpha = 0.8;
                 self.newsHeaderLabel.frame = CGRectMake(cFrame.origin.x, cFrame.origin.y, cFrame.size.width, cFrame.size.height - dy);
             }];
             

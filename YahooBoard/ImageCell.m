@@ -38,12 +38,33 @@
 }
 
 - (void)didClickOnPicture:(id)sender {
+    CGRect oframe = self.frame;
+    UICollectionView *superView = (UICollectionView *)self.superview;
+    CGRect vframe = superView.bounds;
+    CGRect nframeCell = CGRectMake(0, vframe.origin.y-80, self.window.frame.size.width, self.window.frame.size.height + 80);
+    CGRect nframeImage = CGRectMake(0, 0, nframeCell.size.width, nframeCell.size.height);
+
+    dispatch_barrier_async(dispatch_get_main_queue(), ^{
+        self.image.frame = nframeImage;
+        [self.superview bringSubviewToFront:self];
+    });
+    [UIView animateWithDuration:1 animations:^{
+            self.frame = nframeCell;
+        } completion:^(BOOL finished){
+            if ([self.cellType isEqualToString:@"flickr"]) {
+                [self.delegate imageCell:self didTapFlickrPhoto:self.flickr];
+            } else {
+                [self.delegate imageCell:self didTapTumblrPhoto:self.tumblr];
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                self.frame = oframe;
+                
+                self.image.frame = oframe;;
+            });
+            
+        }
+    ];
     
-    if ([self.cellType isEqualToString:@"flickr"]) {
-        [self.delegate imageCell:self didTapFlickrPhoto:self.flickr];
-    } else {
-        [self.delegate imageCell:self didTapTumblrPhoto:self.tumblr];
-    }
 }
 
 
