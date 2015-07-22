@@ -18,6 +18,15 @@
     
     [self displayTumblrPostDetail:self.tumblr];
     [self setTumblrButton];
+    
+    [self.image.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.image.layer setBorderWidth:4.0f];
+    [self.image.layer setCornerRadius:5.0f];
+     
+    [self.descScrollView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.descScrollView.layer setBorderWidth:1.0f];
+    [self.descScrollView.layer setCornerRadius:5.0f];
+    self.tags.text = self.tumblr.tags[0];;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -28,7 +37,7 @@
     self.author.text = self.tumblr.blogName;
     self.desc.text = [self stringByStrippingHTML:self.tumblr.caption];
     self.tags.text = self.tumblr.tags[0];
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.desc sizeToFit];
         //self.desc.preferredMaxLayoutWidth = self.desc.bounds.size.width;
@@ -100,6 +109,7 @@
     
     UIBarButtonItem *tumblrBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
     self.navigationItem.rightBarButtonItem = tumblrBtn;
+    
 }
 
 @end
