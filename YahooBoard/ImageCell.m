@@ -43,12 +43,10 @@
     CGRect vframe = superView.bounds;
     CGRect nframeCell = CGRectMake(0, vframe.origin.y-80, self.window.frame.size.width, self.window.frame.size.height + 80);
     CGRect nframeImage = CGRectMake(0, 0, nframeCell.size.width, nframeCell.size.height);
-
-    dispatch_barrier_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         self.image.frame = nframeImage;
         [self.superview bringSubviewToFront:self];
-    });
-    [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:1 animations:^{
             self.frame = nframeCell;
         } completion:^(BOOL finished){
             if ([self.cellType isEqualToString:@"flickr"]) {
@@ -56,15 +54,15 @@
             } else {
                 [self.delegate imageCell:self didTapTumblrPhoto:self.tumblr];
             }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 self.frame = oframe;
-                
                 self.image.frame = oframe;;
             });
             
         }
-    ];
-    
+        ];
+    });
+
 }
 
 
